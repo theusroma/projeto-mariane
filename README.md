@@ -1,2 +1,2 @@
 # projeto-mariane
-/João/
+/João/Bruna/

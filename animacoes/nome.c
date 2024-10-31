@@ -24,7 +24,7 @@ void nome();
     			printf(" ####   ##   ##  ##   ##  #####   ##  ##       ## \n\n"); Sleep(50);
     
     
-   							printf("#####    #######    ######\n"); Sleep(50);
+   						printf("#####    #######    ######\n"); Sleep(50);
     						printf("##  ##   ##   ##   ##     \n"); Sleep(50);
     						printf("##   ##  #######    ######\n"); Sleep(50);
     						printf("##  ##   ##   ##        ##\n"); Sleep(50);

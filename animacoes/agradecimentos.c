@@ -9,7 +9,8 @@ void agradecimentos();
 
 	void agradecimentos(){
     
-    printf("\t\t  #####                       ##				        \n"); Sleep(40);
+    printf("\t\t  #####                       				        	\n"); Sleep(40);
+    printf("\t\t ##   ##                      ##				        \n"); Sleep(40);
     printf("\t\t ##   ##   ######   ######    ##  #######   #####     #####     ######  \n"); Sleep(40);
     printf("\t\t ##   ##   ##   ##  ##   ##   ##  ##   	   ##   ##    ##  ##   ##    ## \n"); Sleep(40);
     printf("\t\t ##   ##   ######   #######   ##  ##  ###  #######    ##   ##  ##    ## \n"); Sleep(40);

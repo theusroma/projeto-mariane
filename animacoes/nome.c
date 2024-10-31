@@ -1,6 +1,9 @@
-
+// Bibliotecas Padrão
 #include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
 
+// Protótipo
 void nome();
 
 	void nome() {
@@ -37,6 +40,7 @@ void nome();
 }
 
 int main(){
+	system("color 0E");
 	nome();
 return 0;	
 }

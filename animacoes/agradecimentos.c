@@ -17,7 +17,7 @@ void agradecimentos();
     printf("\t\t ##   ##   ##   ##  ##  ##    ##  ##   ##  ##   ##    ##  ##   ##    ## \n"); Sleep(40);
     printf("\t\t  #####    ######   ##   ##   ##   ######  ##   ##    #####     ######  \n\n"); Sleep(40);
     
-    	    printf("\t\t #######                          \n"); Sleep(40);
+    	        printf("\t\t #######                          \n"); Sleep(40);
     		printf("\t\t ##   ##                          \n"); Sleep(40);
     		printf("\t\t ##   ##  ######  ##       #####  \n"); Sleep(40);
     		printf("\t\t ######   ##      ##      ##   ## \n"); Sleep(40);
@@ -28,17 +28,17 @@ void agradecimentos();
     		printf("\t\t ####### ##   ##   ##### \n"); Sleep(40);
     		printf("\t\t ##      ##   ##  ##   ##\n"); Sleep(40);
     		printf("\t\t ######  ##   ##  #######\n"); Sleep(40);
-    	    printf("\t\t     ##  ##   ##  ##   ##\n"); Sleep(40);
-    	    printf("\t\t#######  #######  ##   ##\n\n"); Sleep(40);
+    	        printf("\t\t     ##  ##   ##  ##   ##\n"); Sleep(40);
+    	        printf("\t\t#######  #######  ##   ##\n\n"); Sleep(40);
     
-    printf("\t\t ######                                         	       			\n"); Sleep(40);
-    printf("\t\t##    ##                        	                        		\n"); Sleep(40);
+    printf("\t\t ######                                         	       		\n"); Sleep(40);
+    printf("\t\t##    ##                        	                        	\n"); Sleep(40);
     printf("\t\t##    ##  ########  ######  ###    ##   #####   #####    #####   ## \n"); Sleep(40);
     printf("\t\t########     ##     ##      ## ##  ##  ##      ##   ##  ##   ##  ## \n"); Sleep(40);
     printf("\t\t##    ##     ##     ####    ##  ## ##  ##      #######  ##   ##  ## \n"); Sleep(40);
     printf("\t\t##    ##     ##     ##      ##   ####  ##      ##   ##  ##   ##     \n"); Sleep(40);
     printf("\t\t##    ##     ##     ######  ##     ##   #####  ##   ##   #####   ## \n"); Sleep(40);
-   	printf("\t\t                                          #                    		\n\n"); Sleep(40);
+    printf("\t\t                                          #                    	    \n\n"); Sleep(40);
     						
     						
 }

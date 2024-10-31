@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <windows.h>
 
 // Protótipo
 void nome();
@@ -9,7 +10,7 @@ void nome();
 	void nome() {
     printf(" #######                                                                                    		  \n"); Sleep(50);
     printf(" ##                                 ##                            		                              \n"); Sleep(50);
-    printf(" ##      ##       ######   #######  ##   ######  ##    ##  ##    ######  ##     ##   #######   #######\n"); Sleep(50);
+    printf(" ##      ##       ######   #######  ##   ######  ##    ##  ##    ######  ##     ##   #######    ##### \n"); Sleep(50);
     printf(" #####   ##      ##    ##  ##   ##  ##  ##       ##    ##  ##      ##    ##     ##   ##   ##   ##   ##\n"); Sleep(50);
     printf(" ##      ##      ##    ##  #######  ##  ##       ##    ##  ##      ##    ##     ##   #######   #######\n"); Sleep(50);
     printf(" ##      ##      ##    ##  ##  ##   ##  ##       ##    ##  ##      ##    ##     ##   ##  ##    ##   ##\n"); Sleep(50);
@@ -17,14 +18,14 @@ void nome();
     
     			printf(" #######                                          \n"); Sleep(50);
     			printf("    ##                            ##              \n"); Sleep(50);
-    			printf("    ##  #######  #######  #####   ##  ##       ## \n"); Sleep(50);
+    			printf("    ##   #####   #######  #####   ##  ##       ## \n"); Sleep(50);
     			printf("    ##  ##   ##  ##   ##  ##  ##  ##  ## #   # ## \n"); Sleep(50);
     			printf("##  ##  #######  #######  ##   ## ##  ##  # #  ## \n"); Sleep(50);
     			printf("##  ##  ##   ##  ##  ##   ##  ##  ##  ##   #   ## \n"); Sleep(50);
     			printf(" ####   ##   ##  ##   ##  #####   ##  ##       ## \n\n"); Sleep(50);
     
     
-   						printf("#####    #######    ######\n"); Sleep(50);
+   						printf("#####     #####    ######\n"); Sleep(50);
     						printf("##  ##   ##   ##   ##     \n"); Sleep(50);
     						printf("##   ##  #######    ######\n"); Sleep(50);
     						printf("##  ##   ##   ##        ##\n"); Sleep(50);

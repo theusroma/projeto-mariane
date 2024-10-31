@@ -7,14 +7,14 @@
 // Protótipo
 void agradecimentos();
 
-	void agradecimentos(){//tá com erro no obrigado
+	void agradecimentos(){
     
-    printf("\t\t  #####                      ##										 \n"); Sleep(40);
-    printf("\t\t ##   ##   ######  ######    ##  #######   #####     #####    ######  \n"); Sleep(40);
-    printf("\t\t ##	  ##   ##   ## ##   ##   ##  ##   	  ##   ##    ##  ##  ##    ## \n"); Sleep(40);
-    printf("\t\t ##   ##   ######  #######   ##  ##  ###  #######    ##   ## ##    ## \n"); Sleep(40);
-    printf("\t\t ##   ##   ##   ## ##  ##    ##  ##   ##  ##   ##    ##  ##  ##    ## \n"); Sleep(40);
-    printf("\t\t  #####    ######  ##   ##   ##   ######  ##   ##    #####    ######  \n\n"); Sleep(40);
+    printf("\t\t  #####                       ##				        \n"); Sleep(40);
+    printf("\t\t ##   ##   ######   ######    ##  #######   #####     #####     ######  \n"); Sleep(40);
+    printf("\t\t ##   ##   ##   ##  ##   ##   ##  ##   	   ##   ##    ##  ##   ##    ## \n"); Sleep(40);
+    printf("\t\t ##   ##   ######   #######   ##  ##  ###  #######    ##   ##  ##    ## \n"); Sleep(40);
+    printf("\t\t ##   ##   ##   ##  ##  ##    ##  ##   ##  ##   ##    ##  ##   ##    ## \n"); Sleep(40);
+    printf("\t\t  #####    ######   ##   ##   ##   ######  ##   ##    #####     ######  \n\n"); Sleep(40);
     
     	    printf("\t\t #######                          \n"); Sleep(40);
     		printf("\t\t ##   ##                          \n"); Sleep(40);

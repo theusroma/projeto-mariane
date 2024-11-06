@@ -11,6 +11,7 @@
 // Protótipos
 void arte_menu();
 void menu_principal();
+void menu_venda();
 // End Protótipos
 
 

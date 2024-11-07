@@ -12,8 +12,9 @@
 void arte_menu();
 void menu_principal();
 void menu_venda();
+void flores_indivi();
+void flores_buque();
 // End Protótipos
-
 
 void arte_menu(){
     system("cls");
@@ -21,10 +22,10 @@ void arte_menu(){
     printf("\t		Bem Vindo(a) ao Jardim das Abelhas!\n");
     printf("\t		      	  	       __\n");
     printf("\t    		       .' '.          // \\  \n");
-    printf("\t          .          .   .          \\\\_/ //\n");
+    printf("\t          .            .   .          \\\\_/ //\n");
     printf("\t               .         .         . -(||)(')\n");
     printf("\t                 ' .  . ' ' .  . '    '''\n");
-    printf("\t                   _\n");	
+    printf("\t                    _\n");	
     printf("\t                  _(_)_                          wWWWw    _\n");
     printf("\t      @@@@       (_)@(_)   vVVVv     _     @@@@  (___)  _(_)_\n");
     printf("\t     @@()@@ wWWWw  (_)\\    (___)   _(_)_  @@()@@   Y   (_)@(_)\n");
@@ -54,8 +55,8 @@ void menu_venda(){
 	char opcaoV;
 	
 	arte_menu();
+	
 	do{
-		
 		printf("\n");
 		printf("\t(\\o/)_______________________________________________________(\\o/) \n");
 		printf("\t(/|\\)                                                       (/|\\) \n");
@@ -74,12 +75,15 @@ void menu_venda(){
         switch(opcaoV) {
             case '1':
                 printf("\n\tVenda de flores\n");
+                flores_indivi();
                 break;
             case '2':
                 printf("\n\tVenda de buquê\n");
+                flores_buque();
                 break;
             case '3':
-            	arte();
+            	//arte_menu();
+            	system("cls");
                 printf("\n\tVoltando ao menu principal");
                 sleep(1);
                 printf(".");
@@ -87,16 +91,25 @@ void menu_venda(){
                 printf(".");
                 sleep(1);
                 printf(".");
+                arte_menu();
+                break;
                 
-                break;
             default:
-                printf("\n\t OPÇÃO INVÁLIDA! DIGITE NOVAMENTE: ");
-                break;
+            	arte_menu();
+                printf("\n\t OPÇÃO INVÁLIDA! TENTE NOVAMENTE!");
         }
 
     } while(opcaoV != '3');
 }
-	
+
+void flores_indivi(){
+	printf("oii");
+}
+
+void flores_buque(){
+	printf("tchauu");
+}
+
 int main (){
 	setlocale(LC_ALL, "Portuguese");
 	system("color 0E");
@@ -106,9 +119,7 @@ int main (){
 	arte_menu();
 	
 	do{
-		
 		menu_principal();
-		
 		printf("\n\t DIGITE A OPÇÃO DESEJADA: ");
 		opcaoM = getch();
 		
@@ -139,14 +150,11 @@ int main (){
  	
 		default:
 			arte_menu();
-			menu_principal();
-			printf("\n\t OPÇÃO INVÁLIDA! DIGITE NOVAMENTE: ");
-			opcaoM = getch();
-			system("cls");
+			printf("\n\t OPÇÃO INVÁLIDA! TENTE NOVAMENTE! ");
+			opcaoM = getch;	
 		}
 	
 	} while (opcaoM != '6');
-	
 	
 	return 0;
 }

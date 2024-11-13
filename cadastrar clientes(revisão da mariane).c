@@ -4,7 +4,7 @@
 
 
 //matheus eu e o joao achamos que poderia adicionar na struct o dia, mes, ano, tambem seria bom adicionar o endereço, tipo rua, numero, bairro, cep,
-// complemento, e pensamo tambem se seria uma boa ideia listar todas as informações no final e fazer tipo uma confirmação se os dados estão corretos
+//e pensamo tambem se seria uma boa ideia listar todas as informações no final e fazer tipo uma confirmação se os dados estão corretos
 // o jao falo que da pra fazer tudo em um arquivo temporário e dai quando confirmar, da um rename no arquivo temporario par original e pode deletar 
 // o arquivo antigo
 

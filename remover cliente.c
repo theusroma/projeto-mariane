@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <string.h>
 
+// registros
 typedef struct {
     char nome[100];
     char cpf[12];  
     char telefone[15];
 } Cliente;
 
+// protótipos
 void removerCPF();
 
 void removerCPF() {
@@ -18,20 +20,18 @@ void removerCPF() {
 
     if (arquivo == NULL) {
         printf("Sem clientes cadastrados ainda.\n");
-        return;
     }
 
-    printf("Digite o CPF do usuário que deseja excluir:\n");
+    printf("Digite o CPF do usuario que deseja excluir: \n");
     fgets(cpfProcurado, sizeof(cpfProcurado), stdin);
     
    
 
     int clienteEncontrado = 0;
     
-    while (fscanf(arquivo, "%99s %12s %14s", clienteLido.nome, clienteLido.cpf, clienteLido.telefone) != EOF) {
+    while (fscanf(arquivo, "%99;%12s;%14s", clienteLido.nome, clienteLido.cpf, clienteLido.telefone) != EOF) {
         if (strcmp(clienteLido.cpf, cpfProcurado) == 0) {
-            
-            printf("Cliente encontrado:\nNome: %s\nTelefone: %s\n", clienteLido.nome, clienteLido.telefone);
+            printf("Cliente encontrado \nNome: %s\nTelefone: %s\n", clienteLido.nome, clienteLido.telefone);
             clienteEncontrado = 1;
             break;
         }
@@ -42,6 +42,7 @@ void removerCPF() {
         fclose(arquivo);
         fclose(arquivoTemp);
         return;
+        
     }
 
     
@@ -53,7 +54,7 @@ void removerCPF() {
         printf("Exclusao cancelada.\n");
         fclose(arquivo);
         fclose(arquivoTemp);
-        return;
+        
     }
 
     

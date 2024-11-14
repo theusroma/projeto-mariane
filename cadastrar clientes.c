@@ -89,8 +89,7 @@ void cadastrarcliente() {
 
 	// pede ao usuario numero da casa
     printf("Digite o numero da casa: ");
-    scanf("%d", &novocliente.numero);
-    getchar();  // Limpar o buffer após o scanf
+    scanf("%d", &novocliente.numero)
 	
 	// pede ao usuario o nome do bairro
     printf("Digite o bairro do cliente: ");

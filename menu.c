@@ -3,7 +3,7 @@
 #include <locale.h>
 #include <windows.h>
 
-#include <conio.h>//função para usar getch()
+#include <conio.h>//biblioteca para usar getch()
 
 // Minhas bibliotecas
 #include "animacao.h"

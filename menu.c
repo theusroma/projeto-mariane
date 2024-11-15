@@ -2,30 +2,76 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <windows.h>
-//getch()
-#include <conio.h>
 
-// minhas bibliotecas
+#include <conio.h>//função para usar getch()
 
+// Minhas bibliotecas
+#include "animacao.h"
 
 // Protótipos
 void arte_menu();
+void arte_venda();
 void menu_principal();
-void menu_venda();
-void flores_indivi();
-void flores_buque();
+int flores(int op);
 // End Protótipos
 
+
+/* void venda_flores(){
+	printf("\n");
+}
+*/ 
+
+int flores(int op){
+	printf("\t |            		                                      | \n ");
+	printf("\t |            		                                      | \n ");
+	printf("\t |               =========== FLORES ===========               | \n");
+	printf("\t |------------------------------------------------------------| \n");
+	printf("\t |                     CANTEIRO DA SEMANA                     | \n");
+	printf("\t |------------------------------------------------------------| \n");
+	printf("\t |  [1] Lírios                                                | \n");
+	printf("\t |  [2] Rosas                                                 | \n");
+	printf("\t |  [3] Girassóis                                             | \n");
+	printf("\t |  [4] Violetas	                                      | \n");
+	printf("\t |  [5] Orquídeas          		                      | \n");
+	printf("\t |  [6] Astromélias          		                      | \n");
+	printf("\t |  [7] Tulipas          		                      | \n");
+	printf("\t |                                                            | \n");
+	printf("\t | Selecione a flor desejada (0 para finalizar): ");
+	
+	op = getch();
+	
+	
+}
+
 void arte_menu(){
-    system("cls");
-    printf("\n");
-    printf("\t		Bem Vindo(a) ao Jardim das Abelhas!\n");
-    printf("\t		      	  	       __\n");
-    printf("\t    		       .' '.          // \\  \n");
-    printf("\t          .            .   .          \\\\_/ //\n");
-    printf("\t               .         .         . -(||)(')\n");
-    printf("\t                 ' .  . ' ' .  . '    '''\n");
-    printf("\t                    _\n");	
+	system("cls");
+	printf("\n");
+	printf("\t		Bem Vindo(a) ao Jardim das Abelhas!\n");
+	printf("\t		      	  	       __\n");
+	printf("\t    		       .' '.          // \\  \n");
+	printf("\t          .          .   .          \\\\_/ //\n");
+	printf("\t               .         .         . -(||)(')\n");
+	printf("\t                 ' .  . ' ' .  . '    '''\n");
+	printf("\t                   _\n");	
+    printf("\t                  _(_)_                          wWWWw    _\n");
+    printf("\t      @@@@       (_)@(_)   vVVVv     _     @@@@  (___)  _(_)_\n");
+    printf("\t     @@()@@ wWWWw  (_)\\    (___)   _(_)_  @@()@@   Y   (_)@(_)\n");
+    printf("\t      @@@@  (___)     `|/    Y    (_)@(_)  @@@@   \\|/    (_)\ \n");
+    printf("\t       /      Y       \\|    \\|/    /(_)    \\|      |/      |\n");
+    printf("\t    \\ |     \\ |/       | / \\ | /  \\|/       |/    \\|      \\|/\n");
+    printf("\t    \\\\|//   \\\\|///  \\\\\\|//\\\\\\|/// \\|///  \\\\\\|//  \\\\|//  \\\\\\|//\n");
+    printf("\t^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
+}
+
+void arte_venda(){
+	printf("\n");
+	printf("\t		Floricultura Jardim das Abelhas\n");
+	printf("\t		      	  	       __\n");
+	printf("\t    		       .' '.          // \\  \n");
+	printf("\t          .          .   .          \\\\_/ //\n");
+	printf("\t               .         .         . -(||)(')\n");
+	printf("\t                 ' .  . ' ' .  . '    '''\n");
+	printf("\t                   _\n");	
     printf("\t                  _(_)_                          wWWWw    _\n");
     printf("\t      @@@@       (_)@(_)   vVVVv     _     @@@@  (___)  _(_)_\n");
     printf("\t     @@()@@ wWWWw  (_)\\    (___)   _(_)_  @@()@@   Y   (_)@(_)\n");
@@ -52,36 +98,36 @@ void menu_principal(){
 }
 
 void menu_venda(){
-	char opcaoV;
+	int opcaoV, op_flores;
 	
-	arte_menu();
-	
+	system("cls");
+	arte_venda();
 	do{
 		printf("\n");
-		printf("\t(\\o/)_______________________________________________________(\\o/) \n");
-		printf("\t(/|\\)                                                       (/|\\) \n");
-		printf("\t  |  [1] REALIZAR VENDA DE FLORES                             | \n");
-		printf("\t  |  [2] REALIZAR VENDA DE BUQUÊ                              | \n");
-		printf("\t  |  [3] VOLTAR                                               | \n");
-		printf("\t  |  					                      | \n");
-		printf("\t  |  				                              | \n");
-		printf("\t  |                      		                      | \n");
-		printf("\t(\\o/)_______________________________________________________(\\o/) \n");
-		printf("\t(/|\\)                                                       (/|\\) \n");
+		printf("\t  ____________________________________________________________ \n");
+		printf("\t |                                                            | \n");
+		printf("\t |                           VENDAS                           | \n");
+		printf("\t |------------------------------------------------------------| \n");
+		printf("\t |  [1] Flores                                                | \n");
+		printf("\t |  [2] Buquê                                                 | \n");
+		printf("\t |  [3] Outras plantas                                        | \n");
+		printf("\t |  [4] Itens	                                              | \n");
+		printf("\t |            		                                      | \n ");
+		printf("\t | Digite a opção de venda: ");
+		scanf("%d", &opcaoV);
 		
-		printf("\n\t DIGITE A OPÇÃO DESEJADA: ");
-        opcaoV = getch();
-        
         switch(opcaoV) {
-            case '1':
-                printf("\n\tVenda de flores\n");
-                flores_indivi();
+            case 1:
+            	flores(op_flores);
                 break;
-            case '2':
+            case 2:
                 printf("\n\tVenda de buquê\n");
-                flores_buque();
                 break;
-            case '3':
+            case 3:
+                printf("\n\tVenda de outras plantas\n");
+                break;
+                    
+            case 4:
             	//arte_menu();
             	system("cls");
                 printf("\n\tVoltando ao menu principal");
@@ -96,19 +142,13 @@ void menu_venda(){
                 
             default:
             	arte_menu();
-                printf("\n\t OPÇÃO INVÁLIDA! TENTE NOVAMENTE!");
+                printf("\n\t OPÇÃO INVÁLIDA! DIGITE NOVAMENTE: ");
+                break;
         }
 
-    } while(opcaoV != '3');
+    } while(opcaoV != '4');
 }
-
-void flores_indivi(){
-	printf("oii");
-}
-
-void flores_buque(){
-	printf("tchauu");
-}
+	
 
 int main (){
 	setlocale(LC_ALL, "Portuguese");
@@ -116,10 +156,13 @@ int main (){
 	
 	char opcaoM;
 	
+	nome(); //animacao.h
+	
 	arte_menu();
 	
-	do{
+	do{	
 		menu_principal();
+		
 		printf("\n\t DIGITE A OPÇÃO DESEJADA: ");
 		opcaoM = getch();
 		
@@ -150,11 +193,14 @@ int main (){
  	
 		default:
 			arte_menu();
-			printf("\n\t OPÇÃO INVÁLIDA! TENTE NOVAMENTE! ");
-			opcaoM = getch;	
+			menu_principal();
+			printf("\n\t OPÇÃO INVÁLIDA! DIGITE NOVAMENTE: ");
+			opcaoM = getch();
+			//system("cls");
 		}
 	
 	} while (opcaoM != '6');
+	
 	
 	return 0;
 }

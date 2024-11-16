@@ -38,8 +38,7 @@ int flores(int op){
 	printf("\t |                                                            | \n");
 	printf("\t | Selecione a flor desejada (0 para finalizar): ");
 	
-	op = getch();
-	
+	scanf("%d", &op); // Lê a flor escolhida pelo cliente
 	
 }
 
@@ -102,11 +101,14 @@ void menu_venda(){
 	
 	system("cls");
 	arte_venda();
+	
+	printf("\n");
+	printf("\t  ____________________________________________________________ \n");
+	printf("\t |                                                            | \n");
+	printf("\t |                      GERENCIAR PEDIDO                      | ");
+	
 	do{
-		printf("\n");
-		printf("\t  ____________________________________________________________ \n");
-		printf("\t |                                                            | \n");
-		printf("\t |                           VENDAS                           | \n");
+		printf("\n\t |                                                            | \n");
 		printf("\t |------------------------------------------------------------| \n");
 		printf("\t |  [1] Flores                                                | \n");
 		printf("\t |  [2] Buquê                                                 | \n");
@@ -155,6 +157,7 @@ int main (){
 	system("color 0E");
 	
 	char opcaoM;
+	int venda = 1;
 	
 	nome(); //animacao.h
 	

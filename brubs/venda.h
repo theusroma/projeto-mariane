@@ -3,19 +3,12 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <windows.h>
-
 #include <conio.h>//biblioteca para usar getch()
-
-typedef struct {
-    char nome[20];    // Nome das flores
-    int quantidade;   // Quantidade de flores
-} Flor;
 
 void arte_menu();
 void arte_venda();
 void menu_venda(char **flores, int *quantidade);
 int vendaFlores(char **flores, int *quantidade);
-
 
 void arte_venda(){
 	printf("\n");
@@ -38,7 +31,6 @@ void arte_venda(){
 
 void menu_venda(char **flores, int *quantidade){
 	int opcaoV;
-	
 	
 	system("cls");
 	arte_venda();
@@ -94,9 +86,7 @@ void menu_venda(char **flores, int *quantidade){
         }
 
     } while(opcaoV != 5);
-    
 }
-	
 	/*
 	printf("\t |                                                         |");
     printf("\n\t |       ###########  FORMA DE PAGAMENTO ###########       |");
@@ -112,8 +102,8 @@ int vendaFlores(char **flores, int *quantidade){
 	
 	//Preenchendo o vetor nome com o nome das flores
 	for (i = 0; i < NUM_FLORES; i++) {
-        strcpy(flores[i], nomes[i]); 
-    }
+        	strcpy(flores[i], nomes[i]); 
+    	}
     
 	printf("\t |            		                                      | \n ");
 	printf("\t |            		                                      | \n ");
@@ -136,7 +126,7 @@ int vendaFlores(char **flores, int *quantidade){
 		
 		if (op_flores == 0) {
                 break; // Finaliza o pedido
-            }
+            	}
 
             if (op_flores < 1 || op_flores > 7) {
             	printf("\t | Opção inválida! Pressione qualquer tecla.                  |");
@@ -146,7 +136,7 @@ int vendaFlores(char **flores, int *quantidade){
 	            printf("\t | Quantidade: ");
 	            scanf("%d", &quant_flor);
 				quantidade[op_flores - 1] += quant_flor; //atualiza a quantidade na struct
-        	}
+            }
             
 	} while (op_flores != 0); 
 		

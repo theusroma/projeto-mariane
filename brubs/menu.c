@@ -10,10 +10,7 @@
 #include "animacao.h"
 #include "venda.h"
 
-typedef struct {
-	char nome[20]; //nome das flores
-	int quantidade; //quantidade de flores
-} Flor;
+
 
 // Protótipos
 void arte_menu();
@@ -63,14 +60,22 @@ int main (){
 	setlocale(LC_ALL, "Portuguese");
 	system("color 0E");
 	
-	char opcaoM;
-	int i, venda = 1, quantidade;
-	Flor *flores; //array de struct
+	char opcaoM, **flores;
+	int i, *quantidade;
+	
 	
 	//alocação dinâmica para o array de struct
-	flores = (Flor *) calloc(NUM_FLORES, sizeof(Flor));
+	flores = (char **) malloc(NUM_FLORES * sizeof(char *));
+	for (i = 0; i < NUM_FLORES; i++) {
+        flores[i] = (char *)malloc(20 * sizeof(char)); // Aloca até 20 caracteres para cada nome
+    }
+    
+    quantidade = (int *)calloc(NUM_FLORES, sizeof(int));
 	
 	if(flores == NULL){
+		printf("\n\t ERRO: Memória Insuficiente!");
+	}
+	if(quantidade == NULL){
 		printf("\n\t ERRO: Memória Insuficiente!");
 	}
 	
@@ -101,7 +106,7 @@ int main (){
 			break;
 		
 		case '5':
-			menu_venda(flores);
+			menu_venda(flores, quantidade);
 			break;
 		
 		case '6':
@@ -119,6 +124,7 @@ int main (){
 	} while (opcaoM != '6');
 	
 	free(flores); // Liberar memória alocada
-
+	free(quantidade);
+	
 	return 0;
 }

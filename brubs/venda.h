@@ -13,8 +13,8 @@ typedef struct {
 
 void arte_menu();
 void arte_venda();
-void menu_venda(Flor *flores);
-int vendaFlores(Flor *flores);
+void menu_venda(char **flores, int *quantidade);
+int vendaFlores(char **flores, int *quantidade);
 
 
 void arte_venda(){
@@ -36,9 +36,9 @@ void arte_venda(){
     printf("\t^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
 }
 
-void menu_venda(Flor *flores){
+void menu_venda(char **flores, int *quantidade){
 	int opcaoV;
-	struct Flor;
+	
 	
 	system("cls");
 	arte_venda();
@@ -63,7 +63,7 @@ void menu_venda(Flor *flores){
 		
         switch(opcaoV) {
             case 1:
-            	vendaFlores(flores);
+            	vendaFlores(flores, quantidade);
                 break;
             case 2:
                 printf("\n\tVenda de buquê\n");
@@ -106,13 +106,13 @@ void menu_venda(Flor *flores){
     printf("\n\t | [3] - Vale refeição                                     |");
     printf("\n\t | [4] - Dinheiro                                          |"); */
 
-int vendaFlores(Flor *flores){
-	int i, op_flores, quantidade;
+int vendaFlores(char **flores, int *quantidade){
+	int i, op_flores, quant_flor;
 	const char *nomes[NUM_FLORES] = {"Lírios", "Rosas", "Girassóis", "Violetas", "Orquídeas", "Astromélias", "Tulipas"};
 	
 	//Preenchendo o vetor nome com o nome das flores
 	for (i = 0; i < NUM_FLORES; i++) {
-        strcpy(flores[i].nome, nomes[i]); 
+        strcpy(flores[i], nomes[i]); 
     }
     
 	printf("\t |            		                                      | \n ");
@@ -144,10 +144,11 @@ int vendaFlores(Flor *flores){
                 scanf("%d", &op_flores);	
             } else {
 	            printf("\t | Quantidade: ");
-	            scanf("%d", &quantidade);
-				flores[op_flores - 1].quantidade += quantidade; //atualiza a quantidade na struct
-        }
+	            scanf("%d", &quant_flor);
+				quantidade[op_flores - 1] += quant_flor; //atualiza a quantidade na struct
+        	}
             
 	} while (op_flores != 0); 
-
+		
+	return 0;
 }

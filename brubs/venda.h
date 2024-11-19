@@ -104,7 +104,7 @@ int vendaFlores(char **flores, int *quantidade){
 	for (i = 0; i < NUM_FLORES; i++) {
         	strcpy(flores[i], nomes[i]); 
     	}
-    
+    //fazer um vetor que armazene só as flores escolhidas, e adicionar os valores, talvez struct
 	printf("\t |            		                                      | \n ");
 	printf("\t |            		                                      | \n ");
 	printf("\t |               =========== FLORES ===========               | \n");

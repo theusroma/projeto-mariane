@@ -18,8 +18,6 @@ void menu_principal();
 
 // End Protótipos
 
-
-
 void arte_menu(){
 	system("cls");
 	printf("\n");
@@ -39,6 +37,8 @@ void arte_menu(){
     printf("\t    \\\\|//   \\\\|///  \\\\\\|//\\\\\\|/// \\|///  \\\\\\|//  \\\\|//  \\\\\\|//\n");
     printf("\t^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
 }
+
+
 
 void menu_principal(){
 	printf("\n");
@@ -72,37 +72,47 @@ int main (){
     
     quantidade = (int *)calloc(NUM_FLORES, sizeof(int));
 	
-	if(flores == NULL){
+	if(flores == NULL || quantidade == NULL){
 		printf("\n\t ERRO: Memória Insuficiente!");
 	}
-	if(quantidade == NULL){
-		printf("\n\t ERRO: Memória Insuficiente!");
-	}
-	
+
 	nome(); //animacao.h
-	arte_menu();
+	
 	
 	do{	
+		arte_menu();
 		menu_principal();
 		
 		printf("\n\t DIGITE A OPÇÃO DESEJADA: ");
-		opcaoM = getch();
+		//opcaoM = getch();
+		scanf(" %c", &opcaoM);
 		
 		switch(opcaoM){
 		case '1':
-			printf("Cadastra");
+			printf("\n\tCadastra");
+			printf("\n\tCadastra");
+			printf("\n\tCadastra");
+			printf("\n\tCadastra");
+			printf("\n\tCadastra");
+			printf("\n\tCadastra");
+
+			Sleep(1500);
+			
 			break;
 		
 		case '2':
-			printf("Removendo");
+			printf("\n\tRemovendo");
+			
 			break;
 		
 		case '3':
-			printf("Consulta");
+			printf("\n\tConsulta");
+			
 			break;
 		
 		case '4':
-			printf("Lista");
+			printf("\n\tLista");
+			
 			break;
 		
 		case '5':
@@ -110,7 +120,8 @@ int main (){
 			break;
 		
 		case '6':
-			printf("saindo");
+			printf("\n\tSaindo...");
+			sleep(1500);
 			break;
  	
 		default:

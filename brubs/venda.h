@@ -30,7 +30,7 @@ void arte_venda(){
 }
 
 void menu_venda(char **flores, int *quantidade){
-	int opcaoV;
+	int i, opcaoV, sair = 0, total = 0;
 	
 	system("cls");
 	arte_venda();
@@ -76,16 +76,49 @@ void menu_venda(char **flores, int *quantidade){
                 printf(".");
                 Sleep(1000);
                 printf(".");
-                arte_menu();
-                break;
-                
+                //sair = 1;
+                //break;
+                return;
+            case 0: //finalizar pedido
+            system("cls");
+            arte_venda();
+	            printf("\n");
+				printf("\t  ____________________________________________________________ \n");
+				printf("\t |                                                            | \n");
+				printf("\t |              Venda finalizada! Resumo do pedido:           | \n");
+				printf("\t |------------------------------------------------------------| \n");
+				
+				
+				
+			    printf("\t |============================================================| \n");
+			    
+			    for (i = 0; i < NUM_FLORES; i++) {
+			        if (quantidade[i] > 0) { 
+			            printf("\t- %s: %d unidades\n", flores[i], quantidade[i]);
+			            total += quantidade[i]; // soma o total de flores compradas
+			        }
+			    }
+			    if (total == 0) {
+			        printf("\tNenhuma flor foi comprada.\n");
+			    } else {
+			        printf("\n\tTotal de flores compradas: %d\n", total);
+			    }
+			    printf("\t===================================\n");
+			    printf("\n\tObrigado pela compra!\n");
+			    Sleep(8000);
+			    //sair = 1;
+            	break;
             default:
             	arte_menu();
                 printf("\n\t OPÇÃO INVÁLIDA! DIGITE NOVAMENTE: ");
                 break;
         }
 
-    } while(opcaoV != 5);
+    } while(opcaoV != 0); //loop até que o usuário escolha "voltar" ou "finalizar"
+    
+    
+    
+    
 }
 	/*
 	printf("\t |                                                         |");

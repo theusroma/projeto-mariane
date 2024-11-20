@@ -7,7 +7,7 @@
 #include <conio.h>//biblioteca para usar getch()
 
 // Minhas bibliotecas
-#include "animacao.h"
+//#include "animacao.h"
 #include "venda.h"
 
 
@@ -60,6 +60,7 @@ int main (){
 	setlocale(LC_ALL, "Portuguese");
 	system("color 0E");
 	
+	const char *nomes[NUM_FLORES] = {"Lírios", "Rosas", "Girassóis", "Violetas", "Orquídeas", "Astromélias", "Tulipas"};
 	char opcaoM, **flores;
 	int i, *quantidade;
 	
@@ -74,9 +75,14 @@ int main (){
 	
 	if(flores == NULL || quantidade == NULL){
 		printf("\n\t ERRO: Memória Insuficiente!");
+		exit(1);
 	}
 
-	nome(); //animacao.h
+	//Preenchendo o vetor nome com o nome das flores
+	for (i = 0; i < NUM_FLORES; i++) {
+        	strcpy(flores[i], nomes[i]); 
+		}
+	//nome(); //animacao.h
 	
 	
 	do{	
@@ -133,6 +139,11 @@ int main (){
 		}
 	
 	} while (opcaoM != '6');
+	
+	 // liberação de memória de cada string
+    for (i = 0; i < NUM_FLORES; i++) {
+        free(flores[i]); // Libera cada string
+    }
 	
 	free(flores); // Liberar memória alocada
 	free(quantidade);

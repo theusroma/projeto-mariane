@@ -4,7 +4,7 @@
 
 typedef struct {
     char nome[100];
-    char telefone[15];
+    char telefone[12];
     char cpf[12];
 } Cliente;
 
@@ -87,7 +87,7 @@ void removerCPF() {
     // Copia todos os clientes para o arquivo temporário, exceto o cliente a ser removido
     while (fscanf(arquivo, "%99[^;]; %11s; %11s;\n", clienteLido.nome, clienteLido.cpf, clienteLido.telefone) != EOF) {
         if (strcmp(clienteLido.cpf, cpfProcurado) != 0) {
-            fprintf(temp, "%s; %s; %s\n", clienteLido.nome, clienteLido.cpf, clienteLido.telefone);
+            fprintf(temp, "%s; %s; %s;\n", clienteLido.nome, clienteLido.cpf, clienteLido.telefone);
         } else {
             clienteRemovido = 1;
         }

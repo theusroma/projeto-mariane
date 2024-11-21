@@ -48,7 +48,7 @@ void removerCPF() {
     int clienteEncontrado = 0;
 
     // Buscando o cliente pelo CPF
-    while (fscanf(arquivo, "%99[^;]; %11s; %11s\n", clienteLido.nome, clienteLido.cpf, clienteLido.telefone) != EOF) {
+    while (fscanf(arquivo, "%99[^;]; %11s; %11s;\n", clienteLido.nome, clienteLido.cpf, clienteLido.telefone) != EOF) {
         if (strcmp(clienteLido.cpf, cpfProcurado) == 0) {
             printf("Cliente encontrado:\nNome: %s\nTelefone: %s\n", clienteLido.nome, clienteLido.telefone);
             clienteEncontrado = 1;
@@ -85,7 +85,7 @@ void removerCPF() {
     int clienteRemovido = 0;
 
     // Copia todos os clientes para o arquivo temporário, exceto o cliente a ser removido
-    while (fscanf(arquivo, "%99[^;]; %11s; %11s\n", clienteLido.nome, clienteLido.cpf, clienteLido.telefone) != EOF) {
+    while (fscanf(arquivo, "%99[^;]; %11s; %11s;\n", clienteLido.nome, clienteLido.cpf, clienteLido.telefone) != EOF) {
         if (strcmp(clienteLido.cpf, cpfProcurado) != 0) {
             fprintf(temp, "%s; %s; %s\n", clienteLido.nome, clienteLido.cpf, clienteLido.telefone);
         } else {

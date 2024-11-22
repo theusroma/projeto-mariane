@@ -87,9 +87,9 @@ void cadastrarcliente() {
     fgets(novocliente.rua, sizeof(novocliente.rua), stdin);
     novocliente.rua[strcspn(novocliente.rua, "\n")] = '\0';
 
-	// pede ao usuario numero da casa
+	// pede ao usuario numero da casa  ///TA ERRADO TEM ALGUM ERRO AQUI
     printf("Digite o numero da casa: ");
-    scanf("%d", &novocliente.numero)
+    scanf("%d", &novocliente.numero);
 	
 	// pede ao usuario o nome do bairro
     printf("Digite o bairro do cliente: ");

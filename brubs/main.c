@@ -13,7 +13,7 @@
 // Protótipos
 void arte_menu();
 void menu_principal();
-void menu_venda(char **flores, char **plantas, char **itens, int *quantidade, int *quantidade_buque, int *quantidade_plantas, int *quantidade_sem, int *quantidade_item);
+void menu_venda(char **flores, char **buques, char **sementes, char **plantas, char **itens, int *quantidade, int *quantidade_buque, int *quantidade_plantas, int *quantidade_sem, int *quantidade_item);
 
 
 // End Protótipos
@@ -24,7 +24,7 @@ void arte_menu(){
 	printf("\t		Bem Vindo(a) ao Jardim das Abelhas!\n");
 	printf("\t		      	  	       __\n");
 	printf("\t    		       .' '.          // \\  \n");
-	printf("\t          .            .   .          \\\\_/ //\n");
+	printf("\t            .          .   .          \\\\_/ //\n");
 	printf("\t               .         .         . -(||)(')\n");
 	printf("\t                 ' .  . ' ' .  . '    '''\n");
 	printf("\t                   _\n");	
@@ -37,8 +37,6 @@ void arte_menu(){
     printf("\t    \\\\|//   \\\\|///  \\\\\\|//\\\\\\|/// \\|///  \\\\\\|//  \\\\|//  \\\\\\|//\n");
     printf("\t^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
 }
-
-
 
 void menu_principal(){
 	printf("\n");
@@ -61,15 +59,13 @@ int main (){
 	system("color 0E");
 	
 	const char *nomesF[NUM_FLORES] = {"Rosas", "Lírios", "Tulipas", "Astromélias", "Orquídeas", "Violetas", "Girassóis"};
-	//const char *nomeBuque
+	const char *nomesB[5] = {"Rosas Vermelhas", "Rosas Amarelas", "Rosas com Girassol", "Buquê Campestre", "Buquê Astromélias"};
 	const char *nomesP[NUM_FLORES] = {"Suculentas", "Cactos", "Samabaias", "Buxinhos", "Bromélias", "Dracenas", "Lavandas"};
-	//const char *nomesSem
-	const char *nomesItens[NUM_FLORES] = {"Terra 5kg", "Terra 10kg", "Humus 2kg", "Vaso pequeno", "Vaso médio"};
+	const char *nomesS[5] = {"Morango", "Tomate", "Pimenta Biquinho", "Cenoura", "Flores Sortidas"};
+	const char *nomesI[5] = {"Terra 5kg", "Terra 10kg", "Humus 2kg", "Vaso pequeno", "Vaso médio"};
 	
-	
-	char opcaoM, **flores, **plantas, **itens;
+	char opcaoM, **flores, **plantas, **itens, **buques, **sementes;
 	int i, *quantidade, *quantidade_buque, *quantidade_plantas, *quantidade_sem, *quantidade_item;
-	
 	
 	//alocação dinâmica para o vetor de nomes de flores
 	flores = (char **) malloc(NUM_FLORES * sizeof(char *));
@@ -78,20 +74,29 @@ int main (){
         strcpy(flores[i], nomesF[i]); //preenchendo o vetor flores com o nome das flores
     }
     
-    //buque =
+    buques = (char **) malloc(5 * sizeof(char *));
+	for (i = 0; i < 5; i++) {
+        buques[i] = (char *)malloc(20 * sizeof(char)); 
+        strcpy(buques[i], nomesB[i]); 
+    }
+    
     plantas = (char **) malloc(NUM_FLORES * sizeof(char *));
 	for (i = 0; i < NUM_FLORES; i++) {
         plantas[i] = (char *)malloc(20 * sizeof(char)); 
         strcpy(plantas[i], nomesP[i]); 
     }
     
-    itens = (char **) malloc(NUM_FLORES * sizeof(char *));
+    itens = (char **) malloc(5 * sizeof(char *));
 	for (i = 0; i < 5; i++) {
         itens[i] = (char *)malloc(20 * sizeof(char)); 
-        strcpy(itens[i], nomesItens[i]); 
+        strcpy(itens[i], nomesI[i]); 
     }
     
-    //sementes = 
+    sementes = (char **) malloc(5 * sizeof(char *));
+	for (i = 0; i < 5; i++) {
+        sementes[i] = (char *)malloc(20 * sizeof(char)); 
+        strcpy(sementes[i], nomesS[i]); 
+    }
     
     //alocação para o vetor quantidade de flores
     quantidade = (int *)calloc(NUM_FLORES, sizeof(int));
@@ -143,7 +148,7 @@ int main (){
 			break;
 		
 		case '5':
-			menu_venda(flores, plantas, itens, quantidade, quantidade_buque, quantidade_plantas, quantidade_sem, quantidade_item);
+			menu_venda(flores, buques, plantas, sementes, itens, quantidade, quantidade_buque, quantidade_plantas, quantidade_sem, quantidade_item);
 			break;
 		
 		case '6':

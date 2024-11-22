@@ -1,3 +1,4 @@
-Matheus Silva dos Santos; 11122233344; 41999887766;
-Joao Cesar; 11073076946; 42988916676;
-Bruna Chapelin; 12345678901; 41988432100;
+Matheus Silva dos Santos; 11122233344; 41999887766; rua major salvador joao fernandes; 16; tatuquara; 84350000;
+Bruna Chapelin; 12345678901; 41988432100; rua morretes; 789; portao; 80210420;
+Joao Cesar; 11073076946; 42988916676; rua visconde do rio branco; 1485; centro; 80420210;
+

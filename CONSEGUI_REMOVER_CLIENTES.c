@@ -6,6 +6,10 @@ typedef struct {
     char nome[100];
     char telefone[12];
     char cpf[12];
+    char rua[50];
+    char numero[6];
+    char bairro[50];
+    char cep[10];
 } Cliente;
 
 // Função para verificar se o CPF tem exatamente 11 dígitos numéricos
@@ -50,7 +54,7 @@ void removerCPF() {
     // Buscando o cliente pelo CPF
     while (fscanf(arquivo, "%99[^;]; %11s; %11s; %49[^;]; %6[^;]; %49[^;]; %9[^;];\n", clienteLido.nome, clienteLido.cpf, clienteLido.telefone, clienteLido.rua, clienteLido.numero, clienteLido.bairro, clienteLido.cep) != EOF) {
         if (strcmp(clienteLido.cpf, cpfProcurado) == 0) {
-            printf("Cliente encontrado:\nNome: %s\nTelefone: %s\n", clienteLido.nome, clienteLido.telefone);
+            printf("Cliente encontrado:\nNome: %s\nTelefone: %s\nRua: %s\nNumero: %s\nBairro: %s\nCEP: %s\n", clienteLido.nome, clienteLido.telefone, clienteLido.rua, clienteLido.numero, clienteLido.bairro, clienteLido.cep);
             clienteEncontrado = 1;
             break;
         }

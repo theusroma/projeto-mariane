@@ -61,53 +61,56 @@ int valida_cpf(char cpf[11]) {
 // funcao q vai cadastar o cliente
 void cadastrarcliente() {
     Cliente novocliente;
-
+	
+	arte_funcoes();
+	
     // pedindo dados dos cliente ne zé
-    printf("\nDigite o nome do cliente: ");
+    printf("\n Digite o nome do cliente: ");
     fgets(novocliente.nome, sizeof(novocliente.nome), stdin);
     novocliente.nome[strcspn(novocliente.nome, "\n")] = '\0';
 
-    printf("Digite o CPF do cliente: ");
+    printf("\n\n Digite o CPF do cliente: ");
     fgets(novocliente.cpf, sizeof(novocliente.cpf), stdin);
     novocliente.cpf[strcspn(novocliente.cpf, "\n")] = '\0';
 
     // validacao do cpf
     if (!valida_cpf(novocliente.cpf)) {
-        printf("CPF inválido! Por favor, insira um CPF válido.\n");
-        return;  // Se o CPF for inválido, retorna da função sem salvar o cliente
+        printf("\n CPF inválido! Por favor, insira um CPF válido.\n");
+        return;  // se o CPF for inválido, retorna da função sem salvar o cliente
     }
 
 	// pede ao usuario telefone
-    printf("Digite o telefone do cliente: ");
+    printf("\n Digite o telefone do cliente: ");
     fgets(novocliente.telefone, sizeof(novocliente.telefone), stdin);
     novocliente.telefone[strcspn(novocliente.telefone, "\n")] = '\0';
 
     // pede ao usuario nome da rua
-    printf("Digite a rua do cliente: ");
+    printf("\n Digite a rua do cliente: ");
     fgets(novocliente.rua, sizeof(novocliente.rua), stdin);
     novocliente.rua[strcspn(novocliente.rua, "\n")] = '\0';
 
 	// pede ao usuario numero da casa  ///TA ERRADO TEM ALGUM ERRO AQUI
-    printf("Digite o numero da casa: ");
+    printf("\n Digite o numero da casa: ");
     scanf("%d", &novocliente.numero);
 	
 	// pede ao usuario o nome do bairro
-    printf("Digite o bairro do cliente: ");
+    printf("\n Digite o bairro do cliente: ");
     fgets(novocliente.bairro, sizeof(novocliente.bairro), stdin);
     novocliente.bairro[strcspn(novocliente.bairro, "\n")] = '\0';
 
 	// pede ao usuario o numero do cep
-    printf("Digite o CEP do cliente: ");
+    printf("\n\n Digite o CEP do cliente: ");
     fgets(novocliente.cep, sizeof(novocliente.cep), stdin);
     novocliente.cep[strcspn(novocliente.cep, "\n")] = '\0';
 
+    printf("\n------------------------------------------------------------------------------------------------------------------------");
     // exibe as informações já informadas pelo usuario e pergunta se os dados estao corretos
-    printf("\n    Confirmação dos Dados    \n");
-    printf("Nome: %s\n", novocliente.nome);
-    printf("CPF: %s\n", novocliente.cpf);
-    printf("Telefone: %s\n", novocliente.telefone);
-    printf("Endereço: %s, %d - %s, CEP: %s\n", novocliente.rua, novocliente.numero, novocliente.bairro, novocliente.cep);
-    printf("\nOs dados estão corretos? (s/n): ");
+    printf("\n\t    Confirmação dos Dados    \n");
+    printf("\n Nome: %s\n", novocliente.nome);
+    printf("\n CPF: %s\n", novocliente.cpf);
+    printf("\n Telefone: %s\n", novocliente.telefone);
+    printf("\n Endereço: %s, %d - %s, CEP: %s\n", novocliente.rua, novocliente.numero, novocliente.bairro, novocliente.cep);
+    printf("\n Os dados estão corretos? (s/n): ");
 
     char confirmacao;
     scanf("%c", &confirmacao);
@@ -116,7 +119,7 @@ void cadastrarcliente() {
         // se o usuario digitar 's'	grava os dados no arqiuvo
         FILE *arquivo = fopen("clientes_temp.txt", "a");
         if (arquivo == NULL) {
-            printf("\nErro ao abrir o arquivo!\n");
+            printf("\n\tErro ao abrir o arquivo!\n");
             return;
         }
 
@@ -125,12 +128,11 @@ void cadastrarcliente() {
                 novocliente.nome, novocliente.cpf, novocliente.telefone, 
                 novocliente.rua, novocliente.numero, novocliente.bairro, novocliente.cep);
         fprintf(arquivo, "***************************************\n");
-
         fclose(arquivo);
-        printf("\nCliente cadastrado com sucesso!\n");
+        printf("\n Cliente cadastrado com sucesso!\n");
     } else {
         // se o usuatio digitar n, o cadastro é cancelado
-        printf("\nCadastro cancelado. Nenhum dado foi salvo.\n");
+        printf("\n Cadastro cancelado. Nenhum dado foi salvo.\n");
     }
 }
 

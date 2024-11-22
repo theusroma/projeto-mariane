@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <windows.h>
-
 #include <conio.h>//biblioteca para usar getch()
 
 // Minhas bibliotecas
@@ -14,7 +13,7 @@
 // Protótipos
 void arte_menu();
 void menu_principal();
-void menu_venda(char **flores, int *quantidade, int *quantidade_buque, int *buque_pronto, int *quantidade_plantas, int *quantidade_sem);
+void menu_venda(char **flores, char **plantas, char **itens, int *quantidade, int *quantidade_buque, int *quantidade_plantas, int *quantidade_sem, int *quantidade_item);
 
 
 // End Protótipos
@@ -62,9 +61,14 @@ int main (){
 	system("color 0E");
 	
 	const char *nomesF[NUM_FLORES] = {"Rosas", "Lírios", "Tulipas", "Astromélias", "Orquídeas", "Violetas", "Girassóis"};
+	//const char *nomeBuque
 	const char *nomesP[NUM_FLORES] = {"Suculentas", "Cactos", "Samabaias", "Buxinhos", "Bromélias", "Dracenas", "Lavandas"};
-	char opcaoM, **flores, **plantas;
-	int i, *quantidade, *quantidade_buque, *quantidade_plantas, *quantidade_sem, buque_pronto = 0;
+	//const char *nomesSem
+	const char *nomesItens[NUM_FLORES] = {"Terra 5kg", "Terra 10kg", "Humus 2kg", "Vaso pequeno", "Vaso médio"};
+	
+	
+	char opcaoM, **flores, **plantas, **itens;
+	int i, *quantidade, *quantidade_buque, *quantidade_plantas, *quantidade_sem, *quantidade_item;
 	
 	
 	//alocação dinâmica para o vetor de nomes de flores
@@ -74,11 +78,20 @@ int main (){
         strcpy(flores[i], nomesF[i]); //preenchendo o vetor flores com o nome das flores
     }
     
+    //buque =
     plantas = (char **) malloc(NUM_FLORES * sizeof(char *));
 	for (i = 0; i < NUM_FLORES; i++) {
         plantas[i] = (char *)malloc(20 * sizeof(char)); 
-        strcpy(plantas[i], nomesP[i]); //preenchendo o vetor flores com o nome das flores
+        strcpy(plantas[i], nomesP[i]); 
     }
+    
+    itens = (char **) malloc(NUM_FLORES * sizeof(char *));
+	for (i = 0; i < 5; i++) {
+        itens[i] = (char *)malloc(20 * sizeof(char)); 
+        strcpy(itens[i], nomesItens[i]); 
+    }
+    
+    //sementes = 
     
     //alocação para o vetor quantidade de flores
     quantidade = (int *)calloc(NUM_FLORES, sizeof(int));
@@ -89,8 +102,10 @@ int main (){
     quantidade_plantas = (int *)calloc(NUM_FLORES, sizeof(int));
     
     quantidade_sem = (int *)calloc(5, sizeof(int));
+    
+    quantidade_item = (int *)calloc(5, sizeof(int));
 	
-	if(flores == NULL || quantidade == NULL || quantidade_buque == NULL || quantidade_plantas == NULL || quantidade_sem == NULL ){
+	if(flores == NULL || quantidade == NULL || quantidade_buque == NULL || quantidade_plantas == NULL || quantidade_sem == NULL || quantidade_item == NULL){
 		printf("\n\t ERRO: Memória Insuficiente!");
 		exit(1);
 	}
@@ -103,7 +118,6 @@ int main (){
 		menu_principal();
 		
 		printf("\n\t DIGITE A OPÇÃO DESEJADA: ");
-		//opcaoM = getch();
 		scanf(" %c", &opcaoM);
 		
 		switch(opcaoM){
@@ -129,7 +143,7 @@ int main (){
 			break;
 		
 		case '5':
-			menu_venda(flores, quantidade, quantidade_buque, &buque_pronto, quantidade_plantas, quantidade_sem);
+			menu_venda(flores, plantas, itens, quantidade, quantidade_buque, quantidade_plantas, quantidade_sem, quantidade_item);
 			break;
 		
 		case '6':

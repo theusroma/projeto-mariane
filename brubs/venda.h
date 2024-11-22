@@ -5,18 +5,21 @@
 #include <windows.h>
 #include <conio.h>//biblioteca para usar getch()
 
-void arte_menu();
 void arte_venda();
-void menu_venda(char **flores, int *quantidade);
-void casoZero(char **flores, int *quantidade);
-int vendaFlores(char **flores, int *quantidade);
+void arte_funcoes();
+void menu_venda(char **flores, int *quantidade, int *quantidade_buque, int *buque_pronto);
+void vendaFlores(int *quantidade);
+void vendaBuque(int *quantidade_buque, int *buque_pronto);
+void vendaPlantas();
+void casoZero(char **flores, int *quantidade, int *quantidade_buque, int *buque_pronto);
+
 
 void arte_venda(){
 	printf("\n");
 	printf("\t		Floricultura Jardim das Abelhas\n");
 	printf("\t		      	  	       __\n");
 	printf("\t    		       .' '.          // \\  \n");
-	printf("\t          .          .   .          \\\\_/ //\n");
+	printf("\t          .            .   .          \\\\_/ //\n");
 	printf("\t               .         .         . -(||)(')\n");
 	printf("\t                 ' .  . ' ' .  . '    '''\n");
 	printf("\t                   _\n");	
@@ -30,8 +33,23 @@ void arte_venda(){
     printf("\t^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
 }
 
-void menu_venda(char **flores, int *quantidade){
-	int i, opcaoV;
+void arte_funcoes(){
+	system("cls");
+	printf("========================================================================================================================\n");
+	printf(" __/)      °  |        o     __/)     °   |        o     __/)       ° |        o     __/)       ° |        o     __/) \n");
+	printf("(__(=:        |     .       (__(=:        |     .       (__(=:        |      .      (__(=:        |     .       (__(=: \n");
+	printf("   \\)         |   °            \\)         |   °            \\)         |    °           \\)         |   °            \\)\n");
+	printf("       .      *       .           .       *       .              .    *        .              .   *       .     \n");
+	printf("   °.       (\\__	      °         (\\__              °        (\\__	              °         (\\__	          °  \n");
+	printf("           :=)__)  o            .      :=)__)    o           .    :=)__)   o              .    :=)__)   o            .\n");
+	printf("            (/          *               (/            *            (/            *              (/            *     \n");
+	printf(" °. 	.     °               °.          °              °.          °               °.           °                 °. \n");
+	printf("========================================================================================================================\n");
+}
+
+
+void menu_venda(char **flores, int *quantidade, int *quantidade_buque, int *buque_pronto){
+	int i, opcaoV, pagamento;
 	
 	system("cls");
 	arte_venda();
@@ -56,10 +74,10 @@ void menu_venda(char **flores, int *quantidade){
 		
         switch(opcaoV) {
             case 1:
-            	vendaFlores(flores, quantidade);
+            	vendaFlores(quantidade);
                 break;
             case 2:
-                printf("\n\tVenda de buquê\n");
+                vendaBuque(quantidade_buque, &buque_pronto);
                 break;
             case 3:
                 printf("\n\tVenda de outras plantas\n");
@@ -81,19 +99,31 @@ void menu_venda(char **flores, int *quantidade){
                 //break;
                 return;
             case 0: //finalizar pedido
-            	casoZero(flores, quantidade);
+            	casoZero(flores, quantidade, quantidade_buque, &buque_pronto);
             	break;
             default:
             	arte_menu();
                 printf("\n\t OPÇÃO INVÁLIDA! DIGITE NOVAMENTE: ");
                 break;
         }
-
-    } while(opcaoV != 0); //loop até que o usuário escolha "voltar" ou "finalizar"
+    } while(opcaoV != 0); 
     
+    casoZero(flores, quantidade, quantidade_buque, &buque_pronto);
+    
+    printf("\t |            		                                      | \n ");
+	printf("\t |         =========== FORMA DE PAGAMENTO ===========         | \n");
+	printf("\t |------------------------------------------------------------| \n");
+	printf("\t |  [1] Cartão de débito                                      | \n");
+	printf("\t |  [2] Cartão de crédito                                     | \n");
+	printf("\t |  [3] Dinheiro                                              | \n");
+	printf("\t |  [4] PIX	                                              | \n");
+	printf("\t |            		                                      | \n ");
+	printf("\t | Opção de pagamento: ");
+	scanf("%d", &pagamento);
+	
 }
 
-int vendaFlores(char **flores, int *quantidade){
+void vendaFlores(int *quantidade){
 	int i, op_flores, quant_flor;
 	//const char *nomes[NUM_FLORES] = {"Lírios", "Rosas", "Girassóis", "Violetas", "Orquídeas", "Astromélias", "Tulipas"};
 	
@@ -108,13 +138,13 @@ int vendaFlores(char **flores, int *quantidade){
 	printf("\t |------------------------------------------------------------| \n");
 	printf("\t |                     CANTEIRO DA SEMANA                     | \n");
 	printf("\t |------------------------------------------------------------| \n");
-	printf("\t |  [1] Lírios                                                | \n");
-	printf("\t |  [2] Rosas                                                 | \n");
-	printf("\t |  [3] Girassóis                                             | \n");
-	printf("\t |  [4] Violetas	                                      | \n");
+	printf("\t |  [1] Rosas                                                 | \n");
+	printf("\t |  [2] Lírios                                                | \n");
+	printf("\t |  [3] Tulipas          		                      | \n");
+	printf("\t |  [4] Astromélias	                                      | \n");
 	printf("\t |  [5] Orquídeas          		                      | \n");
-	printf("\t |  [6] Astromélias          		                      | \n");
-	printf("\t |  [7] Tulipas          		                      | \n");
+	printf("\t |  [6] Violetas          		                      | \n");
+	printf("\t |  [7] Girassóis             		                      | \n");
 	printf("\t |                                                            | \n");
 	
 	do{
@@ -125,25 +155,100 @@ int vendaFlores(char **flores, int *quantidade){
                 break; // Finaliza o pedido
             	}
 
-            if (op_flores < 1 || op_flores > NUM_FLORES) {
-            	printf("\t | Opção inválida! Pressione qualquer tecla.                  |");
-				printf("\n\t |            		                                      | \n ");
-                scanf("%d", &op_flores);	
-            } else {
-	            printf("\t | Quantidade: ");
+            if (op_flores >= 1 && op_flores <= NUM_FLORES) {
+            	printf("\t | Quantidade: ");
 	            scanf("%d", &quant_flor);
+	            
 				quantidade[op_flores - 1] += quant_flor; //atualiza a quantidade na struct
+				
+            } else {
+            	printf("\t |            		                                      | \n ");
+	            printf("\t | Opção inválida! Digite Novamente.                         |");
             }
             
 	} while (op_flores != 0); 	
 }
 
-void casoZero(char **flores, int *quantidade){
+void vendaBuque(int *quantidade_buque, int *buque_pronto){
+	int opcaoB, quantidade, tipo_flor;
+	
+	do{
+		printf("\t |            		                                      | \n ");
+		printf("\t |            		                                      | \n ");
+		printf("\t |               =========== BUQUÊS ===========               | \n");
+		printf("\t |------------------------------------------------------------| \n");
+		printf("\t |  [1] Buquê Personalizado                                   | \n");
+		printf("\t |  [2] Buquês Prontos                                        | \n");
+		printf("\t |                                                            | \n");
+		printf("\t | Escolha uma opção (0 para finalizar): ");
+		scanf("%d", &opcaoB);
+	
+		if (opcaoB == 0) {
+			break;
+		}
+    
+	    if (opcaoB == 1) {
+	    	printf("\t |                                                            | \n");
+	    	printf("\t |                                                            | \n");
+	    	printf("\t |         =========== BUQUÊ PERSONALIZADO ===========        | \n");
+		    printf("\t |------------------------------------------------------------| \n");
+			printf("\t |                     CANTEIRO DA SEMANA                     | \n");
+			printf("\t |------------------------------------------------------------| \n");
+			printf("\t |  [1] Rosas                                                 | \n");
+			printf("\t |  [2] Lírios                                                | \n");
+			printf("\t |  [3] Tulipas          		                      | \n");
+			printf("\t |  [4] Astromélias          		                      | \n");
+			printf("\t |                                                            | \n");
+	    	do{
+				printf("\t | Selecione a flor desejada (0 para finalizar): ");
+	        	scanf("%d", &tipo_flor);  // Armazena a escolha do tipo de flor
+	        	
+	        	if (tipo_flor == 0) {
+	        		break;  
+				}
+	        	
+	        	if (tipo_flor >= 1 && tipo_flor <= 4) {
+		            printf("\t | Quantidade: ");
+		            scanf("%d", &quantidade); 
+		            quantidade_buque[tipo_flor - 1] += quantidade;  //adiciona ao vetor de quantidade
+		        } else {
+		        	printf("\t |            		                                      | \n ");
+		            printf("\t | Opção inválida! Digite novamente.                        |");
+				}
+			} while(opcaoB != 0);
+			
+    	} else if (opcaoB == 2) {
+    		printf("\t |                                                            | \n");
+	    	printf("\t |                                                            | \n");
+	    	printf("\t |            =========== BUQUÊS PRONTOS ===========          | \n");
+		    printf("\t |------------------------------------------------------------| \n");
+			printf("\t |  [1] Buquê Rosas Vermelhas                                 | \n");
+			printf("\t |  [2] Buquê Rosas Amarelas                                  | \n");
+			printf("\t |  [3] Buquê Rosas com Girassol        		      | \n");
+			printf("\t |  [4] Buquê Campestre         		              | \n");
+			printf("\t |  [5] Buquê Astromélias         		              | \n");
+			printf("\t |                                                            | \n");
+			printf("\t | Selecione o buquê desejado (0 para finalizar): ");
+			scanf("%d", &buque_pronto);
+		} else{
+			printf("\t |            		                                      | \n ");
+            printf("\t | Opção inválida! Tente novamente.                  |");
+            scanf("%d", &buque_pronto);
+		}
+    } while(opcaoB != 0);
+	
+}
+
+void vendaPlantas(){
+	
+}
+
+void casoZero(char **flores, int *quantidade, int *quantidade_buque, int *buque_pronto){
 	int i, total = 0, pagamento;
     	
 	system("cls");
 	arte_venda();
-	
+	/* 
 	printf("\t |            		                                      | \n ");
 	printf("\t |         =========== FORMA DE PAGAMENTO ===========         | \n");
 	printf("\t |------------------------------------------------------------| \n");
@@ -153,29 +258,53 @@ void casoZero(char **flores, int *quantidade){
 	printf("\t |  [4] PIX	                                              | \n");
 	printf("\t | Opção de pagamento: ");
 	scanf("%d", &pagamento);
-
-	if (pagamento >= 1 && pagamento <= 4){
-		printf("\t |============================================================| \n");
+ */
+	//if (pagamento >= 1 && pagamento <= 4){
+		printf("\t  ____________________________________________________________ \n");
 		printf("\t |            		                                      | \n ");
 		printf("\t |              Venda finalizada! Resumo do pedido:           | \n");
 		printf("\t |------------------------------------------------------------| \n");
 	
-	
+		//flores individuais
 	    for (i = 0; i < NUM_FLORES; i++) {
 	        if (quantidade[i] > 0) { 
+	        	printf("\t |  -> FLORES INDIVIDUAIS:                                  | \n");
 	            printf("\t | - %s: %d unidades\n", flores[i], quantidade[i]);
 	            total += quantidade[i]; // soma o total de flores compradas
 	        }
 	    }
-	    if (total == 0) {
-	        printf("\tNenhuma flor foi comprada.\n");
-	    } else {
-	        printf("\n\tTotal de flores compradas: %d\n", total);
+	    
+	    //buquê personalizado
+	    for (i = 0; i < 4; i++) {
+	        if (quantidade_buque[i] > 0) { 
+	        
+	        	printf("\t |  Buquê personalizado:                                  | \n");
+	            printf("\t | - %s: %d unidades\n", flores[i], quantidade_buque[i]);
+	            total += quantidade_buque[i]; 
+	        }
 	    }
-	    printf("\t===================================\n");
-	    printf("\n\tObrigado pela compra!\n");
-	    Sleep(8000);
+	    
+	    //buquê pronto
+	    if (*buque_pronto > 0) {
+	        printf("\t |  Buquê pronto:                                  | \n");
+	        if(*buque_pronto == 1)
+	        	printf("\t |  Buquê Rosas Vermelhas                                 | \n");
+	        else if (*buque_pronto == 2)
+	        	printf("\t |  Buquê Rosas Amarelas                                  | \n");
+	        else if (*buque_pronto == 3)
+	        	printf("\t |  Buquê Rosas com Girassol                              | \n");
+	        else if (*buque_pronto == 4)
+	        	printf("\t |  Buquê Astromélias                                     | \n");
+	        else
+	        	printf("\t |  Buquê Campestre                                       | \n");		
+	        total++; // Adiciona o buquê pronto ao total
+    	}
+	    
+	    printf("\t |  Total de itens: %d                              | \n", total);
+	    printf("\t |  Obrigado pela compra!                             | \n");
+
+	    //Sleep(10000);
 	    //sair = 1;	
-	}
+	//}
 	
 }

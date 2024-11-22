@@ -6,6 +6,10 @@ typedef struct {
     char nome[100];
     char telefone[15];
     char cpf[12];
+    char rua[50];
+    char numero[6];
+    char bairro[50];
+    char cep[10];
 } Cliente;
 
 void lista_ordenada();

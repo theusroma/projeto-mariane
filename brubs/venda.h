@@ -7,12 +7,12 @@
 
 void arte_venda();
 void arte_funcoes();
-void menu_venda(char **flores, char **plantas, char **itens, int *quantidade, int *quantidade_buque, int *quantidade_plantas, int *quantidade_sem, int *quantidade_item);
+void menu_venda(char **flores, char **buques, char **sementes, char **plantas, char **itens, int *quantidade, int *quantidade_buque, int *quantidade_plantas, int *quantidade_sem, int *quantidade_item);
 void vendaFlores(int *quantidade);
 void vendaBuque(int *quantidade_buque);
 void vendaPlantas(int *quantidade_plantas, int *quantidade_sem);
 void vendaItens(int *quantidade_item);
-void resumoPedido(char **flores, char **plantas, char **itens, int *quantidade, int *quantidade_buque, int *quantidade_plantas, int *quantidade_sem, int *quantidade_item);
+void resumoPedido(char **flores, char **buques, char **sementes, char **plantas, char **itens, int *quantidade, int *quantidade_buque, int *quantidade_plantas, int *quantidade_sem, int *quantidade_item);
 
 
 void arte_venda(){
@@ -20,7 +20,7 @@ void arte_venda(){
 	printf("\t		Floricultura Jardim das Abelhas\n");
 	printf("\t		      	  	       __\n");
 	printf("\t    		       .' '.          // \\  \n");
-	printf("\t          .            .   .          \\\\_/ //\n");
+	printf("\t            .          .   .          \\\\_/ //\n");
 	printf("\t               .         .         . -(||)(')\n");
 	printf("\t                 ' .  . ' ' .  . '    '''\n");
 	printf("\t                   _\n");	
@@ -49,7 +49,7 @@ void arte_funcoes(){
 }
 
 
-void menu_venda(char **flores, char **plantas, char **itens, int *quantidade, int *quantidade_buque, int *quantidade_plantas, int *quantidade_sem, int *quantidade_item){
+void menu_venda(char **flores, char **buques, char **plantas, char **sementes, char **itens, int *quantidade, int *quantidade_buque, int *quantidade_plantas, int *quantidade_sem, int *quantidade_item){
 	int i, op_V, pagamento;
 	
 	system("cls");
@@ -105,7 +105,7 @@ void menu_venda(char **flores, char **plantas, char **itens, int *quantidade, in
         }
     } while(op_V != 0); 
     
-    resumoPedido(flores, plantas, itens, quantidade, quantidade_buque, quantidade_plantas, quantidade_sem, quantidade_item);
+    resumoPedido(flores, buques, plantas, sementes, itens, quantidade, quantidade_buque, quantidade_plantas, quantidade_sem, quantidade_item);
     
     printf("\t |            		                                      | \n ");
 	printf("\t |         =========== FORMA DE PAGAMENTO ===========         | \n");
@@ -122,16 +122,20 @@ void menu_venda(char **flores, char **plantas, char **itens, int *quantidade, in
 		printf("\t |            		                                      | \n ");
 	    printf("\t | Opção inválida! Digite Novamente.                         |");
 	}
-}
+	
+	system("cls");
+	arte_venda();
+	printf("\t(\\o/)_______________________________________________________(\\o/) \n");
+	printf("\t(/|\\)        		                                    (/|\\) \n");
+	printf("\t  |	      Obrigado pela compra! Volte sempre!             | \n");
+	printf("\t(\\o/)_______________________________________________________(\\o/) \n");
+	printf("\t(/|\\)                                                       (/|\\) \n");
+	Sleep(6000);
+}                                                                             
 
 void vendaFlores(int *quantidade){
 	int i, op_flores, quant_flor;
 	
-	//Preenchendo o vetor nome com o nome das flores
-	//for (i = 0; i < NUM_FLORES; i++) {
-    //    	strcpy(flores[i], nomes[i]); 
-    //	}
-    
 	printf("\t |            		                                      | \n ");
 	printf("\t |            		                                      | \n ");
 	printf("\t |               =========== FLORES ===========               | \n");
@@ -171,13 +175,14 @@ void vendaFlores(int *quantidade){
 
 void vendaBuque(int *quantidade_buque){
 	int quantidade, tipoBuque;
+	
 	printf("\t |                                                            | \n");
 	printf("\t |                                                            | \n");
 	printf("\t |             =========== BUQUÊS ===========                 | \n");
     printf("\t |------------------------------------------------------------| \n");
-	printf("\t |  [1] Buquê Rosas Vermelhas                                 | \n");
-	printf("\t |  [2] Buquê Rosas Amarelas                                  | \n");
-	printf("\t |  [3] Buquê Rosas com Girassol        		      | \n");
+	printf("\t |  [1] Rosas Vermelhas                                       | \n");
+	printf("\t |  [2] Rosas Amarelas                                        | \n");
+	printf("\t |  [3] Rosas com Girassol         		              | \n");
 	printf("\t |  [4] Buquê Campestre         		              | \n");
 	printf("\t |  [5] Buquê Astromélias         		              | \n");
 	printf("\t |                                                            | \n");
@@ -294,40 +299,39 @@ void vendaPlantas(int *quantidade_plantas, int *quantidade_sem){
 
 void vendaItens(int *quantidade_item){
 	int quantidade, tipoItem; 
-	
-		printf("\t |            		                                      | \n ");
-		printf("\t |            		                                      | \n ");
-		printf("\t |               =========== ITENS ===========               | \n");
-		printf("\t |------------------------------------------------------------| \n");
-		printf("\t |  [1] Pacote de terra 5kg                                   | \n");
-		printf("\t |  [2] Pacote de terra 10kg                                  | \n");
-		printf("\t |  [3] Humus de minhoca 2kg                                  | \n");
-		printf("\t |  [4] Vaso pequeno                                          | \n");
-		printf("\t |  [5] Vaso médio                                            | \n");
-		printf("\t |                                                            | \n");
-	
+
+	printf("\t |            		                                      | \n ");
+	printf("\t |            		                                      | \n ");
+	printf("\t |               =========== ITENS ===========                | \n");
+	printf("\t |------------------------------------------------------------| \n");
+	printf("\t |  [1] Pacote de terra 5kg                                   | \n");
+	printf("\t |  [2] Pacote de terra 10kg                                  | \n");
+	printf("\t |  [3] Humus de minhoca 2kg                                  | \n");
+	printf("\t |  [4] Vaso pequeno                                          | \n");
+	printf("\t |  [5] Vaso médio                                            | \n");
+	printf("\t |                                                            | \n");
+
 	do{
 		printf("\t | Escolha uma opção (0 para finalizar): ");
 		scanf("%d", &tipoItem);	
 		  
 		if (tipoItem == 0) {
-            break; // finaliza o pedido
-        	}
-
-        if (tipoItem >= 1 && tipoItem <= 5) {
-        	printf("\t | Quantidade: ");
-            scanf("%d", &quantidade);
-            
+	        break; // finaliza o pedido
+	    	}
+	
+	    if (tipoItem >= 1 && tipoItem <= 5) {
+	    	printf("\t | Quantidade: ");
+	        scanf("%d", &quantidade);
 			quantidade_item[tipoItem - 1] += quantidade; //atualiza a quantidade na struct
-        } else {
-        	printf("\t |            		                                      | \n ");
-            printf("\t | Opção inválida! Digite Novamente.                         |");
-        }
-        
+	    } else {
+	    	printf("\t |            		                                      | \n ");
+	        printf("\t | Opção inválida! Digite Novamente.                         |");
+	    }
+	    
 	} while(tipoItem != 0);
 }
 
-void resumoPedido(char **flores, char **plantas, char **itens, int *quantidade, int *quantidade_buque, int *quantidade_plantas, int *quantidade_sem, int *quantidade_item){
+void resumoPedido(char **flores, char **buques, char **plantas, char **itens, char **sementes, int *quantidade, int *quantidade_buque, int *quantidade_plantas, int *quantidade_sem, int *quantidade_item){
 	int i, total = 0, pagamento;
     	
 	system("cls");
@@ -336,84 +340,52 @@ void resumoPedido(char **flores, char **plantas, char **itens, int *quantidade, 
 	printf("\t |            		                                      | \n ");
 	printf("\t |             VENDA FINALIZADA! Resumo do pedido:            | \n");
 	printf("\t |------------------------------------------------------------| \n");
-
-	//flores individuais
+	
+	printf("\t |-> FLORES:                                                  | \n");
 	for (i = 0; i < NUM_FLORES; i++) {
-	if (quantidade[i] > 0) {
-		printf("\t |-> FLORES INDIVIDUAIS:                                      | \n");
-    	for (i = 0; i < NUM_FLORES; i++) {
-            printf("\t | - %s: %d unidades\n", flores[i], quantidade[i]);
-            total += quantidade[i]; // soma o total de flores compradas
+		if (quantidade[i] > 0) {
+        	printf("\t | - %s: %d unidades\n", flores[i], quantidade[i]);
+        	total += quantidade[i]; // soma o total de flores compradas
         }
-        printf("\t |            		                                      | \n ");
     }
-    printf("\t |------------------------------------------------------------| \n");
-    }
+    printf("\t |------------------------------------------------------------| \n");    	
     
-    //buquês
+    printf("\t |-> BUQUÊS:                                                  | \n");
     for (i = 0; i < 5; i++) {
-    if (quantidade_buque[i] > 0) { 
-    	printf("\t |-> BUQUÊS:                                                | \n");
-    	for (i = 0; i < 5; i++) {
-            printf("\t | - %s: %d unidades\n", flores[i], quantidade_buque[i]);
-            total += quantidade_buque[i]; 
-        }
-    }
-    printf("\t |------------------------------------------------------------| \n");
-	}	
+		if (quantidade_buque[i] > 0) { 
+        	printf("\t | - %s: %d unidades\n", buques[i], quantidade_buque[i]);
+        	total += quantidade_buque[i];
+    	}
+	}
+	printf("\t |------------------------------------------------------------| \n");	
 	
-	//sementes
-	if (quantidade_sem[i] > 0) { 
-    	printf("\t |-> SEMENTES:\n");
-    	for (i = 0; i < 5; i++) {
-    		if (quantidade_sem[0] >= 1){
-    			printf("\t | - Morango: %d unidades\n", quantidade_sem[i]);
-			}
-			else if (quantidade_sem[1] >= 1){
-				printf("\t | - Tomate: %d unidades\n", quantidade_sem[i]);
-			}
-			else if (quantidade_sem[2] >= 1){
-				printf("\t | - Pimenta Biquinho: %d unidades\n", quantidade_sem[i]);
-			}
-			else if (quantidade_sem[3] >= 1){
-				printf("\t | - Cenoura: %d unidades\n", quantidade_sem[i]);
-			}
-			else if (quantidade_sem[4] >= 1){
-				printf("\t | - Flores Sortidas: %d unidades\n", quantidade_sem[i]);
-			}
-            total += quantidade_sem[i]; 
-        }
-        printf("\t |------------------------------------------------------------| \n");
-    }
-	
-	//plantas
+	printf("\t |-> PLANTAS:                                                 | \n");
 	for (i = 0; i < NUM_FLORES; i++) {
-    if (quantidade_plantas[i] > 0) { 
-    	printf("\t |-> PLANTAS:                                               | \n");
-    	for (i = 0; i < NUM_FLORES; i++) {
-            printf("\t | - %s: %d unidades\n", plantas[i], quantidade_plantas[i]);
-            total += quantidade_plantas[i]; 
-        }
+		if (quantidade_plantas[i] > 0) { 
+        	printf("\t | - %s: %d unidades\n", plantas[i], quantidade_plantas[i]);
+        	total += quantidade_plantas[i]; 
+		}
+	}
+	printf("\t |------------------------------------------------------------| \n");	
+	
+	printf("\t |-> SEMENTES:                                                | \n");
+	for (i = 0; i < 5; i++) {
+		if (quantidade_sem[i] > 0) { 
+            printf("\t | - %s: %d unidades\n", sementes[i], quantidade_sem[i]);
+            total += quantidade_sem[i]; 
+    	}	
     }
     printf("\t |------------------------------------------------------------| \n");
-	}	
-	
-	//itens
-	for (i = 0; i < 5; i++) {
-    if (quantidade_item[i] > 0) { 
-    	printf("\t |-> ITENS:                                                | \n");
-    	for (i = 0; i < 5; i++) {
+    
+    printf("\t |-> ITENS:                                                   | \n");
+    for (i = 0; i < 5; i++) {
+    	if (quantidade_item[i] > 0) { 
             printf("\t | - %s: %d unidades\n", itens[i], quantidade_item[i]);
             total += quantidade_item[i]; 
-        }
-    }
-    printf("\t |------------------------------------------------------------| \n");
+    	}
 	}
-
+	
+	printf("\t |------------------------------------------------------------| \n");
     printf("\t |                                                            | \n");
     printf("\t |-> TOTAL DE ITENS: %d                                        | \n", total);
-    printf("\t |                                                            | \n");
-    printf("\t |  Obrigado pela compra! Volte sempre!                       | \n");
-
-    Sleep(6000);
 }

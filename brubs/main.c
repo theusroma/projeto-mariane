@@ -9,12 +9,13 @@
 // Minhas bibliotecas
 //#include "animacao.h"
 #include "venda.h"
-
-
+#include "funcoes.h"
 
 // Protótipos
 void arte_menu();
 void menu_principal();
+void menu_venda(char **flores, int *quantidade, int *quantidade_buque, int *buque_pronto);
+
 
 // End Protótipos
 
@@ -24,7 +25,7 @@ void arte_menu(){
 	printf("\t		Bem Vindo(a) ao Jardim das Abelhas!\n");
 	printf("\t		      	  	       __\n");
 	printf("\t    		       .' '.          // \\  \n");
-	printf("\t          .          .   .          \\\\_/ //\n");
+	printf("\t          .            .   .          \\\\_/ //\n");
 	printf("\t               .         .         . -(||)(')\n");
 	printf("\t                 ' .  . ' ' .  . '    '''\n");
 	printf("\t                   _\n");	
@@ -61,27 +62,28 @@ int main (){
 	system("color 0E");
 	
 	const char *nomes[NUM_FLORES] = {"Lírios", "Rosas", "Girassóis", "Violetas", "Orquídeas", "Astromélias", "Tulipas"};
+	//char *flores_buque[] = {"Rosas", "Lírios", "Tulipas", "Astromélias"};
 	char opcaoM, **flores;
-	int i, *quantidade;
+	int i, *quantidade, *quantidade_buque, buque_pronto = 0;
 	
 	
-	//alocação dinâmica para o array de struct
+	//alocação dinâmica para o vetor de nomes de flores
 	flores = (char **) malloc(NUM_FLORES * sizeof(char *));
 	for (i = 0; i < NUM_FLORES; i++) {
-        flores[i] = (char *)malloc(20 * sizeof(char)); // Aloca até 20 caracteres para cada nome
+        flores[i] = (char *)malloc(20 * sizeof(char)); // aloca até 20 caracteres para cada nome
+        strcpy(flores[i], nomes[i]); //preenchendo o vetor nome com o nome das flores
     }
-    
+    //alocação para o vetor quantidade de flores
     quantidade = (int *)calloc(NUM_FLORES, sizeof(int));
+    
+    //alocação para o vetor quantidade de flores na função vendaBuque()
+    quantidade_buque = (int *)calloc(4, sizeof(int));
 	
-	if(flores == NULL || quantidade == NULL){
+	if(flores == NULL || quantidade == NULL || quantidade_buque == NULL){
 		printf("\n\t ERRO: Memória Insuficiente!");
 		exit(1);
 	}
 
-	//Preenchendo o vetor nome com o nome das flores
-	for (i = 0; i < NUM_FLORES; i++) {
-        	strcpy(flores[i], nomes[i]); 
-		}
 	//nome(); //animacao.h
 	
 	
@@ -95,34 +97,28 @@ int main (){
 		
 		switch(opcaoM){
 		case '1':
-			printf("\n\tCadastra");
-			printf("\n\tCadastra");
-			printf("\n\tCadastra");
-			printf("\n\tCadastra");
-			printf("\n\tCadastra");
-			printf("\n\tCadastra");
-
-			Sleep(1500);
+			cadastro();
+			Sleep(8000);
 			
 			break;
 		
 		case '2':
-			printf("\n\tRemovendo");
-			
+			remover();
+			Sleep(8000);
 			break;
 		
 		case '3':
-			printf("\n\tConsulta");
-			
+			consulta();
+			Sleep(8000);
 			break;
 		
 		case '4':
-			printf("\n\tLista");
-			
+			lista();
+			Sleep(8000);
 			break;
 		
 		case '5':
-			menu_venda(flores, quantidade);
+			menu_venda(flores, quantidade, quantidade_buque, &buque_pronto);
 			break;
 		
 		case '6':
@@ -145,8 +141,10 @@ int main (){
         free(flores[i]); // Libera cada string
     }
 	
-	free(flores); // Liberar memória alocada
+	// liberar memória alocada
+	free(flores); 
 	free(quantidade);
+	free(quantidade_buque);
 	
 	return 0;
 }

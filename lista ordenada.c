@@ -51,7 +51,12 @@ void lista_ordenada(){
 	    for (j = 0; j < i; j++) {
 	        printf("Nome: %s\n", cliente[j].nome);
 	        printf("CPF: %s\n", cliente[j].cpf);
-	        printf("Telefone: %s\n\n", cliente[j].telefone);
+	        printf("Telefone: %s\n", cliente[j].telefone);
+		printf("Rua: %s\n",cliente[j].rua);
+		printf("Numero: %s\n",cliente[j].numero);    
+		printf("Bairro: %s\n",cliente[j].bairro);
+		printf("CEP: %s\n",cliente[j].cep);
+		   
 	    }
 	
 }

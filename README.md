@@ -4,11 +4,11 @@
 
 
 
-cadastrar novo OK
-remover OK
-consultar OK
-listar OK
-venda 
-desativar 
+cadastrar novo OK ||
+remover OK ||
+consultar OK ||
+listar OK ||
+venda ||
+desativar || 
 busca
 

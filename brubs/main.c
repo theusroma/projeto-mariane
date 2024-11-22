@@ -14,7 +14,7 @@
 // Protótipos
 void arte_menu();
 void menu_principal();
-void menu_venda(char **flores, int *quantidade, int *quantidade_buque, int *buque_pronto);
+void menu_venda(char **flores, int *quantidade, int *quantidade_buque, int *buque_pronto, int *quantidade_plantas, int *quantidade_sem);
 
 
 // End Protótipos
@@ -61,25 +61,36 @@ int main (){
 	setlocale(LC_ALL, "Portuguese");
 	system("color 0E");
 	
-	const char *nomes[NUM_FLORES] = {"Lírios", "Rosas", "Girassóis", "Violetas", "Orquídeas", "Astromélias", "Tulipas"};
-	//char *flores_buque[] = {"Rosas", "Lírios", "Tulipas", "Astromélias"};
-	char opcaoM, **flores;
-	int i, *quantidade, *quantidade_buque, buque_pronto = 0;
+	const char *nomesF[NUM_FLORES] = {"Rosas", "Lírios", "Tulipas", "Astromélias", "Orquídeas", "Violetas", "Girassóis"};
+	const char *nomesP[NUM_FLORES] = {"Suculentas", "Cactos", "Samabaias", "Buxinhos", "Bromélias", "Dracenas", "Lavandas"};
+	char opcaoM, **flores, **plantas;
+	int i, *quantidade, *quantidade_buque, *quantidade_plantas, *quantidade_sem, buque_pronto = 0;
 	
 	
 	//alocação dinâmica para o vetor de nomes de flores
 	flores = (char **) malloc(NUM_FLORES * sizeof(char *));
 	for (i = 0; i < NUM_FLORES; i++) {
-        flores[i] = (char *)malloc(20 * sizeof(char)); // aloca até 20 caracteres para cada nome
-        strcpy(flores[i], nomes[i]); //preenchendo o vetor nome com o nome das flores
+        flores[i] = (char *)malloc(20 * sizeof(char)); 
+        strcpy(flores[i], nomesF[i]); //preenchendo o vetor flores com o nome das flores
     }
+    
+    plantas = (char **) malloc(NUM_FLORES * sizeof(char *));
+	for (i = 0; i < NUM_FLORES; i++) {
+        plantas[i] = (char *)malloc(20 * sizeof(char)); 
+        strcpy(plantas[i], nomesP[i]); //preenchendo o vetor flores com o nome das flores
+    }
+    
     //alocação para o vetor quantidade de flores
     quantidade = (int *)calloc(NUM_FLORES, sizeof(int));
     
     //alocação para o vetor quantidade de flores na função vendaBuque()
-    quantidade_buque = (int *)calloc(4, sizeof(int));
+    quantidade_buque = (int *)calloc(5, sizeof(int));
+    
+    quantidade_plantas = (int *)calloc(NUM_FLORES, sizeof(int));
+    
+    quantidade_sem = (int *)calloc(5, sizeof(int));
 	
-	if(flores == NULL || quantidade == NULL || quantidade_buque == NULL){
+	if(flores == NULL || quantidade == NULL || quantidade_buque == NULL || quantidade_plantas == NULL || quantidade_sem == NULL ){
 		printf("\n\t ERRO: Memória Insuficiente!");
 		exit(1);
 	}
@@ -118,7 +129,7 @@ int main (){
 			break;
 		
 		case '5':
-			menu_venda(flores, quantidade, quantidade_buque, &buque_pronto);
+			menu_venda(flores, quantidade, quantidade_buque, &buque_pronto, quantidade_plantas, quantidade_sem);
 			break;
 		
 		case '6':
@@ -140,11 +151,17 @@ int main (){
     for (i = 0; i < NUM_FLORES; i++) {
         free(flores[i]); // Libera cada string
     }
+    for (i = 0; i < NUM_FLORES; i++) {
+        free(plantas[i]); 
+    }
 	
 	// liberar memória alocada
 	free(flores); 
+	free(plantas);
 	free(quantidade);
 	free(quantidade_buque);
+	free(quantidade_plantas);
+	free(quantidade_sem);
 	
 	return 0;
 }

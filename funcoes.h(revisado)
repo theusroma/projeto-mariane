@@ -1,4 +1,4 @@
-//aparentemente tudo certo, só na hora de adicionar o cliente que tá pulando o parte de prencher o nome : (
+//aparentemente tudo certo, só na hora após colocar o numero da casa, ele simplesmente para de funcionar, fica travado : (
 
 #define NUM_FLORES 7
 #include <stdio.h>

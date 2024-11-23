@@ -6,52 +6,20 @@
 #include <conio.h>//biblioteca para usar getch()
 
 // Minhas bibliotecas
-//#include "animacao.h"
+#include "animacao.h" //animação inicial e artes
 #include "venda.h"
 #include "funcoes.h"
 
 // Protótipos
 void arte_menu();
 void menu_principal();
+void cadastrarCliente();
+
+
+
+
 void menu_venda(char **flores, char **buques, char **sementes, char **plantas, char **itens, int *quantidade, int *quantidade_buque, int *quantidade_plantas, int *quantidade_sem, int *quantidade_item);
-
-
 // End Protótipos
-
-void arte_menu(){
-	system("cls");
-	printf("\n");
-	printf("\t		Bem Vindo(a) ao Jardim das Abelhas!\n");
-	printf("\t		      	  	       __\n");
-	printf("\t    		       .' '.          // \\  \n");
-	printf("\t            .          .   .          \\\\_/ //\n");
-	printf("\t               .         .         . -(||)(')\n");
-	printf("\t                 ' .  . ' ' .  . '    '''\n");
-	printf("\t                   _\n");	
-    printf("\t                  _(_)_                          wWWWw    _\n");
-    printf("\t      @@@@       (_)@(_)   vVVVv     _     @@@@  (___)  _(_)_\n");
-    printf("\t     @@()@@ wWWWw  (_)\\    (___)   _(_)_  @@()@@   Y   (_)@(_)\n");
-    printf("\t      @@@@  (___)     `|/    Y    (_)@(_)  @@@@   \\|/    (_)\ \n");
-    printf("\t       /      Y       \\|    \\|/    /(_)    \\|      |/      |\n");
-    printf("\t    \\ |     \\ |/       | / \\ | /  \\|/       |/    \\|      \\|/\n");
-    printf("\t    \\\\|//   \\\\|///  \\\\\\|//\\\\\\|/// \\|///  \\\\\\|//  \\\\|//  \\\\\\|//\n");
-    printf("\t^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
-}
-
-void menu_principal(){
-	printf("\n");
-	printf("\t(\\o/)_______________________________________________________(\\o/) \n");
-	printf("\t(/|\\)                                                       (/|\\) \n");
-	printf("\t  |  [1] CADASTRAR NOVO CLIENTE                               | \n");
-	printf("\t  |  [2] REMOVER CLIENTE                                      | \n");
-	printf("\t  |  [3] CONSULTAR CLIENTE                                    | \n");
-	printf("\t  |  [4] LISTAR CLIENTES                                      | \n");
-	printf("\t  |  [5] VENDA	                                              | \n");
-	printf("\t  |  [6] SAIR          		                              | \n");
-	printf("\t(\\o/)_______________________________________________________(\\o/) \n");
-	printf("\t(/|\\)                                                       (/|\\) \n");
-	
-}
 	
 
 int main (){
@@ -117,7 +85,6 @@ int main (){
 
 	//nome(); //animacao.h
 	
-	
 	do{	
 		arte_menu();
 		menu_principal();
@@ -127,13 +94,12 @@ int main (){
 		
 		switch(opcaoM){
 		case '1':
-			cadastro();
+			cadastrarCliente();
 			Sleep(8000);
-			
 			break;
 		
 		case '2':
-			remover();
+			removerCPF();
 			Sleep(8000);
 			break;
 		
@@ -148,39 +114,57 @@ int main (){
 			break;
 		
 		case '5':
+			desativar();
+			Sleep(1500);
+			break;
+	
+		case '6':
 			menu_venda(flores, buques, plantas, sementes, itens, quantidade, quantidade_buque, quantidade_plantas, quantidade_sem, quantidade_item);
 			break;
-		
-		case '6':
-			printf("\n\tSaindo...");
-			sleep(1500);
+			
+		case '7':
+			printf("\n\t Saindo...");
+			Sleep(1500);
 			break;
  	
 		default:
 			arte_menu();
 			menu_principal();
-			printf("\n\t OPÇÃO INVÁLIDA! DIGITE NOVAMENTE: ");
+			printf("\n\t OPÇÃO INVÁLIDA! PRESSIONE QUALQUER TECLA: ");
 			opcaoM = getch();
 			//system("cls");
 		}
 	
-	} while (opcaoM != '6');
+	} while (opcaoM != '7');
 	
 	 // liberação de memória de cada string
     for (i = 0; i < NUM_FLORES; i++) {
         free(flores[i]); // Libera cada string
     }
+    for (i = 0; i < 5; i++) {
+        free(buques[i]); 
+    }
     for (i = 0; i < NUM_FLORES; i++) {
         free(plantas[i]); 
+    }
+	for (i = 0; i < 5; i++) {
+        free(sementes[i]); 
+    }
+	for (i = 0; i < 5; i++) {
+        free(itens[i]); 
     }
 	
 	// liberar memória alocada
 	free(flores); 
+	free(buques);
 	free(plantas);
+	free(sementes);
+	free(itens);
 	free(quantidade);
 	free(quantidade_buque);
 	free(quantidade_plantas);
 	free(quantidade_sem);
+	free(quantidade_item);
 	
 	return 0;
 }

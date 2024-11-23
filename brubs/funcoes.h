@@ -150,7 +150,7 @@ void cadastrarCliente(){
         }
 
         // escrevendo os dados do usuario no arquivo
-        fprintf(arquivo, "%s;%s;%s;%s;%d;%s;%s\n", 
+        fprintf(arquivo, "%s;%s;%s;%s;%d;%s;%s;\n", 
                 novocliente.nome, novocliente.cpf, novocliente.telefone, 
                 novocliente.rua, novocliente.numero, novocliente.bairro, novocliente.cep);
         fprintf(arquivo, "***************************************\n");

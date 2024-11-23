@@ -115,14 +115,15 @@ void cadastrarCliente(){
     fgets(novocliente.rua, sizeof(novocliente.rua), stdin);
     novocliente.rua[strcspn(novocliente.rua, "\n")] = '\0';
 
-	// pede ao usuario numero da casa  ///TA ERRADO TEM ALGUM ERRO AQUI
-    printf("\n Digite o numero da casa: ");
-    scanf("%d", &novocliente.numero);
-	
-	// pede ao usuario o nome do bairro
-    printf("\n Digite o bairro do cliente: ");
-    fgets(novocliente.bairro, sizeof(novocliente.bairro), stdin);
-    novocliente.bairro[strcspn(novocliente.bairro, "\n")] = '\0';
+	// pede ao usuario numero da casa
+printf("\n Digite o numero da casa: ");
+scanf("%d", &novocliente.numero);
+getchar(); // Limpa o buffer
+
+// pede ao usuario o nome do bairro
+printf("\n Digite o bairro do cliente: ");
+fgets(novocliente.bairro, sizeof(novocliente.bairro), stdin);
+novocliente.bairro[strcspn(novocliente.bairro, "\n")] = '\0';
 
 	// pede ao usuario o numero do cep
     printf("\n\n Digite o CEP do cliente: ");

@@ -96,10 +96,12 @@ void cadastrarCliente(){
 	
 	arte_funcoes();
 	
+	getchar();
     // pedindo dados dos cliente ne zé
     printf("\n\n Digite o CPF do cliente: ");
     fgets(novocliente.cpf, sizeof(novocliente.cpf), stdin);
     novocliente.cpf[strcspn(novocliente.cpf, "\n")] = '\0';
+    getchar();
 
     // validacao do cpf
     if (!valida_cpf(novocliente.cpf)) {
@@ -124,6 +126,7 @@ void cadastrarCliente(){
 	printf("\n Digite o numero da casa: ");
 	fgets(novocliente.numero, sizeof(novocliente.numero), stdin);
 	novocliente.numero[strcspn(novocliente.numero, "\n")] = '\0';
+	getchar();
 
 	// pede ao usuario o nome do bairro
 	printf("\n Digite o bairro do cliente: ");

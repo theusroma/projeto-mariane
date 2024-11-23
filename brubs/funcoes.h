@@ -143,7 +143,7 @@ void cadastrarCliente(){
     getchar(); 
     if (confirmacao == 's' || confirmacao == 'S') {
         // se o usuario digitar 's'	grava os dados no arqiuvo
-        FILE *arquivo = fopen("clientes_temp.txt", "a");
+        FILE *arquivo = fopen("clientes.txt", "a");
         if (arquivo == NULL) {
             printf("\n\tErro ao abrir o arquivo!\n");
             return;

@@ -7,6 +7,8 @@
 #include <conio.h>//biblioteca para usar getch()
 #include <ctype.h>
 
+
+
 typedef struct {
     char nome[50];
     char cpf[15];
@@ -15,6 +17,7 @@ typedef struct {
     int numero;
     char bairro[50];
     char cep[10];
+    int status; // 1 para ativo, 0 para desativado
 } Cliente;
 
 int valida_cpf(char cpf[11]);
@@ -129,6 +132,9 @@ novocliente.bairro[strcspn(novocliente.bairro, "\n")] = '\0';
     printf("\n\n Digite o CEP do cliente: ");
     fgets(novocliente.cep, sizeof(novocliente.cep), stdin);
     novocliente.cep[strcspn(novocliente.cep, "\n")] = '\0';
+    
+    
+    novocliente.status = 1; //MUDA O STATUS por causa da desativação
 
 	printf("\n------------------------------------------------------------------------------------------------------------------------");
     // exibe as informações já informadas pelo usuario e pergunta se os dados estao corretos
@@ -162,6 +168,55 @@ novocliente.bairro[strcspn(novocliente.bairro, "\n")] = '\0';
         printf("\n Cadastro cancelado. Nenhum dado foi salvo.\n");
     }
 }	
+
+
+//void desativar() {
+//    char cpf[15];
+//    printf("\nDigite o CPF do cliente a ser desativado: ");
+//    fgets(cpf, sizeof(cpf), stdin);
+//    cpf[strcspn(cpf, "\n")] = '\0'; // Remove o '\n' da string
+//
+//    FILE *arquivo = fopen("clientes_temp.txt", "r");
+//    if (arquivo == NULL) {
+//        printf("\nErro ao abrir o arquivo!\n");
+//        return;
+//    }
+//
+//    FILE *arquivo_temp = fopen("clientes_temp_modificado.txt", "w");
+//    if (arquivo_temp == NULL) {
+//        printf("\nErro ao criar arquivo temporário!\n");
+//        fclose(arquivo);
+//        return;
+//    }
+//
+//    Cliente cliente;
+//    int encontrado = 0;
+//
+//    while (fscanf(arquivo, "%49[^;];%14[^;];%14[^;];%49[^;];%d;%49[^;];%9[^;];%d\n",
+//                  cliente.nome, cliente.cpf, cliente.telefone, cliente.rua,
+//                  &cliente.numero, cliente.bairro, cliente.cep, &cliente.status) != EOF) {
+//        if (strcmp(cliente.cpf, cpf) == 0) {
+//            cliente.status = 0;  // Marca como desativado
+//            encontrado = 1;
+//        }
+//        fprintf(arquivo_temp, "%s;%s;%s;%s;%d;%s;%s;%d\n", 
+//                cliente.nome, cliente.cpf, cliente.telefone, cliente.rua,
+//                cliente.numero, cliente.bairro, cliente.cep, cliente.status);
+//    }
+//
+//    fclose(arquivo);
+//    fclose(arquivo_temp);
+//
+//    if (encontrado) {
+//        remove("clientes_temp.txt");
+//        rename("clientes_temp_modificado.txt", "clientes_temp.txt");
+//        printf("\nCliente desativado com sucesso!\n");
+//    } else {
+//        printf("\nCliente não encontrado!\n");
+//        remove("clientes_temp_modificado.txt");
+//    }
+//}
+
 void removerCPF(){
 	int verificacao;
     Cliente clienteLido;

@@ -353,7 +353,7 @@ void lista_ordenada(){
 	    }
 	
 	    // Ler os dados do arquivo
-	    while (fscanf(arquivo, "%99[^;]; %11s; %11s; %49[^;]; %6[^;]; %49[^;]; %9[^;]; %d;\n",  cliente[i].nome, cliente[i].cpf, cliente[i].telefone, cliente[i].rua, cliente[i].numero, cliente[i].bairro, cliente[i].cep, &cliente[i].status) != EOF) {
+	    while (fscanf(arquivo, "%49[^;]; %11s; %11s; %49[^;]; %6[^;]; %49[^;]; %9[^;]; %d;\n",  cliente[i].nome, cliente[i].cpf, cliente[i].telefone, cliente[i].rua, cliente[i].numero, cliente[i].bairro, cliente[i].cep, &cliente[i].status) != EOF) {
 	        i++;
 	    }
 	

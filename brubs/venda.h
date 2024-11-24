@@ -143,12 +143,12 @@ void vendaFlores(int *quantidade){
 	printf("\t |                     CANTEIRO DA SEMANA                     | \n");
 	printf("\t |------------------------------------------------------------| \n");
 	printf("\t |  [1] Rosas                                       R$ 10,00  | \n");
-	printf("\t |  [2] Lírios                                      R$ 15,00   | \n");
-	printf("\t |  [3] Tulipas          		              R$26,90     | \n");
-	printf("\t |  [4] Astromélias	                              R$ 10,90 | \n");
-	printf("\t |  [5] Orquídeas          		             R$ 63,90 | \n");
-	printf("\t |  [6] Violetas          		         R$ 15,90     | \n");
-	printf("\t |  [7] Girassóis             		       R$ 20,00     | \n");
+	printf("\t |  [2] Lírios                                      R$ 15,00  | \n");
+	printf("\t |  [3] Tulipas          		            R$ 26,90  | \n");
+	printf("\t |  [4] Astromélias	                            R$ 10,90  | \n");
+	printf("\t |  [5] Orquídeas          		            R$ 63,90  | \n");
+	printf("\t |  [6] Violetas          		            R$ 15,90  | \n");
+	printf("\t |  [7] Girassóis             		            R$ 20,00  | \n");
 	printf("\t |                                                            | \n");
 	
 	do{
@@ -391,5 +391,5 @@ void resumoPedido(char **flores, char **buques, char **plantas, char **itens, ch
 	
 	printf("\t |------------------------------------------------------------| \n");
     printf("\t |                                                            | \n");
-    printf("\t |-> TOTAL DE ITENS: %d                                       | \n", total);
+    printf("\t |-> TOTAL DE ITENS: %d                                         \n", total);
 }

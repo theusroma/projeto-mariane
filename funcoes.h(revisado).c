@@ -95,7 +95,7 @@ void cadastrarCliente(){
 	Cliente novocliente;
 
     // pedindo dados dos cliente ne zé
-    printf("\n Digite o CPF do cliente: ");
+    printf("\n\n Digite o CPF do cliente: ");
     fgets(novocliente.cpf, sizeof(novocliente.cpf), stdin);
     novocliente.cpf[strcspn(novocliente.cpf, "\n")] = '\0';
     getchar();
@@ -157,7 +157,8 @@ void cadastrarCliente(){
         }
 
         // escrevendo os dados do usuario no arquivo
-        fprintf(arquivo, "%s;%s;%s;%s;%s;%s;%s;\n", novocliente.nome, novocliente.cpf, novocliente.telefone, novocliente.rua, novocliente.numero, novocliente.bairro, novocliente.cep);
+        novocliente.status = 1;
+        fprintf(arquivo, "%s;%s;%s;%s;%s;%s;%s;%d;\n", novocliente.nome, novocliente.cpf, novocliente.telefone, novocliente.rua, novocliente.numero, novocliente.bairro, novocliente.cep, novocliente.status);
         
         fclose(arquivo);
         printf("\n Cliente cadastrado com sucesso!\n");

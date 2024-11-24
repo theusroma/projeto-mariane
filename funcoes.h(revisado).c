@@ -1,5 +1,3 @@
-//aparentemente tudo certo, só na hora após colocar o numero da casa, ele simplesmente para de funcionar, fica travado : (
-
 #define NUM_FLORES 7
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,7 +25,8 @@ int validarCPF();
 void cadastrarCliente();
 void removerCPF();
 void consulta();
-void lista();
+void lista_ordenada();
+int compararClientes(const void *a, const void *b);
 void desativar();
 //End Protótipos
 
@@ -90,46 +89,62 @@ int validarCPF(const char* cpf) {
     return 1; // CPF válido
 }
 
+int compararClientes(const void *a, const void *b);
+
+int compararCliente(const void *a, const void *b) {
+    Cliente *clienteA = (Cliente *)a;
+    Cliente *clienteB = (Cliente *)b;
+    return strcmp(clienteA->nome, clienteB->nome);
+}
+
 // funcao q vai cadastar o cliente
 void cadastrarCliente(){
 	Cliente novocliente;
-
+	
+	
+	
     // pedindo dados dos cliente ne zé
-    printf("\n\n Digite o CPF do cliente: ");
+    printf("\n Digite o CPF do cliente: ");
     fgets(novocliente.cpf, sizeof(novocliente.cpf), stdin);
     novocliente.cpf[strcspn(novocliente.cpf, "\n")] = '\0';
-    getchar();
+    
 
     // validacao do cpf
     if (!valida_cpf(novocliente.cpf)) {
         printf("\n CPF inválido! Por favor, insira um CPF válido.\n");
         return;  // se o CPF for inválido, retorna da função sem salvar o cliente
     }
+    getchar();
     printf("\n Digite o nome do cliente: ");
     fgets(novocliente.nome, sizeof(novocliente.nome), stdin);
     novocliente.nome[strcspn(novocliente.nome, "\n")] = '\0';
 
 	// pede ao usuario telefone
+	
     printf("\n Digite o telefone do cliente: ");
     fgets(novocliente.telefone, sizeof(novocliente.telefone), stdin);
     novocliente.telefone[strcspn(novocliente.telefone, "\n")] = '\0';
 
     // pede ao usuario nome da rua
+    
     printf("\n Digite a rua do cliente: ");
     fgets(novocliente.rua, sizeof(novocliente.rua), stdin);
     novocliente.rua[strcspn(novocliente.rua, "\n")] = '\0';
 
 	// pede ao usuario numero da casa
+	
 	printf("\n Digite o numero da casa: ");
 	fgets(novocliente.numero, sizeof(novocliente.numero), stdin);
 	novocliente.numero[strcspn(novocliente.numero, "\n")] = '\0';
 
 	// pede ao usuario o nome do bairro
+	
 	printf("\n Digite o bairro do cliente: ");
 	fgets(novocliente.bairro, sizeof(novocliente.bairro), stdin);
 	novocliente.bairro[strcspn(novocliente.bairro, "\n")] = '\0';
 
 	// pede ao usuario o numero do cep
+	
     printf("\n Digite o CEP do cliente: ");
     fgets(novocliente.cep, sizeof(novocliente.cep), stdin);
     novocliente.cep[strcspn(novocliente.cep, "\n")] = '\0';
@@ -138,6 +153,7 @@ void cadastrarCliente(){
 
 	printf("\n------------------------------------------------------------------------------------------------------------------------");
     // exibe as informações já informadas pelo usuario e pergunta se os dados estao corretos
+    
     printf("\n\t    Confirmação dos Dados    \n");
     printf("\n Nome: %s\n", novocliente.nome);
     printf("\n CPF: %s\n", novocliente.cpf);
@@ -157,23 +173,29 @@ void cadastrarCliente(){
         }
 
         // escrevendo os dados do usuario no arquivo
-        novocliente.status = 1;
-        fprintf(arquivo, "%s;%s;%s;%s;%s;%s;%s;%d;\n", novocliente.nome, novocliente.cpf, novocliente.telefone, novocliente.rua, novocliente.numero, novocliente.bairro, novocliente.cep, novocliente.status);
-        
+       fprintf(arquivo, "%s; %s; %s; %s; %s; %s; %s; %d;\n", 
+        novocliente.nome, 
+        novocliente.cpf, 
+        novocliente.telefone, 
+        novocliente.rua, 
+        novocliente.numero, 
+        novocliente.bairro, 
+        novocliente.cep, 
+        novocliente.status); // Inclui o status do cliente
+
         fclose(arquivo);
         printf("\n Cliente cadastrado com sucesso!\n");
     } else {
         // se o usuatio digitar n, o cadastro é cancelado
         printf("\n Cadastro cancelado. Nenhum dado foi salvo.\n");
     }
-}	
-
+}
 void removerCPF(){
 	int verificacao;
     Cliente clienteLido;
     char cpfProcurado[12];  // CPF com tamanho fixo de 11 caracteres + '\0'
 	
-	arte_funcoes();
+	
 	
     // Abrindo arquivo para leitura
     FILE *arquivo = fopen("clientes.txt", "r");
@@ -196,9 +218,9 @@ void removerCPF(){
     int clienteEncontrado = 0;
 
     // Buscando o cliente pelo CPF
-    while (fscanf(arquivo, "%49[^;]; %11s; %11s; %49[^;]; %6[^;]; %49[^;]; %9[^;];\n", clienteLido.nome, clienteLido.cpf, clienteLido.telefone, clienteLido.rua, clienteLido.numero, clienteLido.bairro, clienteLido.cep) != EOF) {
+    while (fscanf(arquivo, "%49[^;]; %11s; %11s; %49[^;]; %6[^;]; %49[^;]; %9[^;]; %d;\n", clienteLido.nome, clienteLido.cpf, clienteLido.telefone, clienteLido.rua, clienteLido.numero, clienteLido.bairro, clienteLido.cep, &clienteLido.status) != EOF) {
         if (strcmp(clienteLido.cpf, cpfProcurado) == 0) {
-            printf("Cliente encontrado:\nNome: %s\nTelefone: %s\nRua: %s\nNumero: %s\nBairro: %s\nCEP: %s\n", clienteLido.nome, clienteLido.telefone, clienteLido.rua, clienteLido.numero, clienteLido.bairro, clienteLido.cep);
+            printf("Cliente encontrado:\nNome: %s\nTelefone: %s\nRua: %s\nNumero: %s\nBairro: %s\nCEP: %s\nStatus: %d\n", clienteLido.nome, clienteLido.telefone, clienteLido.rua, clienteLido.numero, clienteLido.bairro, clienteLido.cep,clienteLido.status);
             clienteEncontrado = 1;
             break;
         }
@@ -233,9 +255,9 @@ void removerCPF(){
     int clienteRemovido = 0;
 
     // Copia todos os clientes para o arquivo temporário, exceto o cliente a ser removido
-    while (fscanf(arquivo, "%49[^;]; %11s; %11s; %49[^;]; %6[^;]; %49[^;]; %9[^;];\n", clienteLido.nome, clienteLido.cpf, clienteLido.telefone, clienteLido.rua, clienteLido.numero, clienteLido.bairro, clienteLido.cep) != EOF) {
+    while (fscanf(arquivo, "%49[^;]; %11s; %11s; %49[^;]; %6[^;]; %49[^;]; %9[^;]; %d;\n", clienteLido.nome, clienteLido.cpf, clienteLido.telefone, clienteLido.rua, clienteLido.numero, clienteLido.bairro, clienteLido.cep, &clienteLido.status) != EOF) {
         if (strcmp(clienteLido.cpf, cpfProcurado) != 0) {
-            fprintf(temp, "%s; %s; %s; %s; %s; %s; %s;\n", clienteLido.nome, clienteLido.cpf, clienteLido.telefone, clienteLido.rua, clienteLido.numero, clienteLido.bairro, clienteLido.cep);
+            fprintf(temp, "%s; %s; %s; %s; %s; %s; %s; %d;\n", clienteLido.nome, clienteLido.cpf, clienteLido.telefone, clienteLido.rua, clienteLido.numero, clienteLido.bairro, clienteLido.cep, clienteLido.status);
         } else {
             clienteRemovido = 1;
         }
@@ -262,31 +284,23 @@ void removerCPF(){
 }
 
 
-void consulta(){
-	arte_funcoes();
-}
-
-void lista(){
-	arte_funcoes();
-}
 
 void desativar() {
     char cpf[12];
+    getchar();
     printf("\nDigite o CPF do cliente a ser desativado: ");
     fgets(cpf, sizeof(cpf), stdin);
     cpf[strcspn(cpf, "\n")] = '\0'; // Remove o '\n' da string
 
-	arte_funcoes();
-	
     FILE *arquivo = fopen("clientes.txt", "r");
     if (arquivo == NULL) {
-        printf("\nErro ao abrir o arquivo!\n");
+        printf("\nErro ao abrir o arquivo 'clientes.txt'!\n");
         return;
     }
 
     FILE *arquivo_temp = fopen("clientes_temp_modificado.txt", "w");
     if (arquivo_temp == NULL) {
-        printf("\nErro ao criar arquivo temporário!\n");
+        printf("\nErro ao criar o arquivo temporário!\n");
         fclose(arquivo);
         return;
     }
@@ -294,12 +308,24 @@ void desativar() {
     Cliente cliente;
     int encontrado = 0;
 
-    while (fscanf(arquivo, "%49[^;];%11[^;];%11[^;];%49[^;];%6[^;];%49[^;];%9[^;];%d;\n", cliente.nome, cliente.cpf, cliente.telefone, cliente.rua, cliente.numero, cliente.bairro, cliente.cep, &cliente.status) != EOF) {
+    // Loop para processar cada linha do arquivo
+    while (fscanf(arquivo, "%49[^;]; %11[^;]; %11[^;]; %49[^;]; %6[^;]; %49[^;]; %9[^;]; %d;\n",
+                  cliente.nome, cliente.cpf, cliente.telefone, cliente.rua, 
+                  cliente.numero, cliente.bairro, cliente.cep, &cliente.status) != EOF) {
+        // Comparação do CPF fornecido com o CPF lido
         if (strcmp(cliente.cpf, cpf) == 0) {
-            cliente.status = 0;  // Marca como desativado
-            encontrado = 1;
+            if (cliente.status == 1) { // Verifica se já está ativo
+                cliente.status = 0;  // Desativa o cliente
+                encontrado = 1;
+                printf("\nCliente '%s' desativado com sucesso!\n", cliente.nome);
+            } else {
+                printf("\nCliente '%s' já está desativado!\n", cliente.nome);
+            }
         }
-        fprintf(arquivo_temp, "%s;%s;%s;%s;%s;%s;%s;%d;\n", cliente.nome, cliente.cpf, cliente.telefone, cliente.rua,cliente.numero, cliente.bairro, cliente.cep, cliente.status);
+        // Escreve no arquivo temporário, com ou sem alterações
+        fprintf(arquivo_temp, "%s; %s; %s; %s; %s; %s; %s; %d;\n", cliente.nome, cliente.cpf, 
+                cliente.telefone, cliente.rua, cliente.numero, cliente.bairro, 
+                cliente.cep, cliente.status);
     }
 
     fclose(arquivo);
@@ -308,9 +334,48 @@ void desativar() {
     if (encontrado) {
         remove("clientes.txt");
         rename("clientes_temp_modificado.txt", "clientes.txt");
-        printf("\nCliente desativado com sucesso!\n");
     } else {
-        printf("\nCliente não encontrado!\n");
+        printf("\nCliente com CPF %s não encontrado!\n", cpf);
         remove("clientes_temp_modificado.txt");
     }
 }
+void lista_ordenada(){
+	int i = 0, j = 0;
+	Cliente cliente[100];
+	
+	
+	// Abrir o arquivo para leitura
+	FILE *arquivo = fopen("clientes.txt", "r");
+	
+	if (arquivo == NULL) {
+	        printf("Erro ao abrir o arquivo.\n");
+	        return ;
+	    }
+	
+	    // Ler os dados do arquivo
+	    while (fscanf(arquivo, "%99[^;]; %11s; %11s; %49[^;]; %6[^;]; %49[^;]; %9[^;]; %d;\n",  cliente[i].nome, cliente[i].cpf, cliente[i].telefone, cliente[i].rua, cliente[i].numero, cliente[i].bairro, cliente[i].cep, &cliente[i].status) != EOF) {
+	        i++;
+	    }
+	
+	    // Fechar o arquivo
+	    fclose(arquivo);
+	
+	    // Ordenar os clientes em ordem alfabética pelo nome
+	    qsort(cliente, i, sizeof(Cliente), compararCliente);
+	
+	    // Exibir os clientes ordenados
+	    printf("Clientes cadastrados:\n");
+	    for (j = 0; j < i; j++) {
+	        printf("Nome: %s\n", cliente[j].nome);
+	        printf("CPF: %s\n", cliente[j].cpf);
+	        printf("Telefone: %s\n", cliente[j].telefone);
+		printf("Rua: %s\n",cliente[j].rua);
+		printf("Numero: %s\n",cliente[j].numero);    
+		printf("Bairro: %s\n",cliente[j].bairro);
+		printf("CEP: %s\n",cliente[j].cep);
+		printf("Status: %d\n",cliente[j].status);
+		printf("\n\n");
+	    }
+	    system("pause");
+}
+

@@ -10,14 +10,11 @@
 #include "venda.h"
 #include "funcoes.h"
 
+
 // Protótipos
 void arte_menu();
 void menu_principal();
 void cadastrarCliente();
-
-
-
-
 void menu_venda(char **flores, char **buques, char **sementes, char **plantas, char **itens, int *quantidade, int *quantidade_buque, int *quantidade_plantas, int *quantidade_sem, int *quantidade_item);
 // End Protótipos
 	
@@ -100,7 +97,6 @@ int main (){
 		
 		case '2':
 			removerCPF();
-			Sleep(8000);
 			break;
 		
 		case '3':
@@ -109,8 +105,7 @@ int main (){
 			break;
 		
 		case '4':
-			lista();
-			Sleep(8000);
+			lista_ordenada();
 			break;
 		
 		case '5':

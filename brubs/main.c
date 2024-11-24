@@ -92,25 +92,27 @@ int main (){
 		switch(opcaoM){
 		case '1':
 			cadastrarCliente();
-			Sleep(8000);
+			Sleep(5000);
 			break;
 		
 		case '2':
 			removerCPF();
+			Sleep(5000);
 			break;
 		
 		case '3':
-			consulta();
-			Sleep(8000);
+			//consulta();
+			Sleep(5000);
 			break;
 		
 		case '4':
 			lista_ordenada();
+			Sleep(5000);
 			break;
 		
 		case '5':
 			desativar();
-			Sleep(1500);
+			Sleep(5000);
 			break;
 	
 		case '6':

@@ -142,13 +142,13 @@ void vendaFlores(int *quantidade){
 	printf("\t |------------------------------------------------------------| \n");
 	printf("\t |                     CANTEIRO DA SEMANA                     | \n");
 	printf("\t |------------------------------------------------------------| \n");
-	printf("\t |  [1] Rosas                                                 | \n");
-	printf("\t |  [2] Lírios                                                | \n");
-	printf("\t |  [3] Tulipas          		                      | \n");
-	printf("\t |  [4] Astromélias	                                      | \n");
-	printf("\t |  [5] Orquídeas          		                      | \n");
-	printf("\t |  [6] Violetas          		                      | \n");
-	printf("\t |  [7] Girassóis             		                      | \n");
+	printf("\t |  [1] Rosas                                       R$ 10,00  | \n");
+	printf("\t |  [2] Lírios                                      R$ 15,00   | \n");
+	printf("\t |  [3] Tulipas          		              R$26,90     | \n");
+	printf("\t |  [4] Astromélias	                              R$ 10,90 | \n");
+	printf("\t |  [5] Orquídeas          		             R$ 63,90 | \n");
+	printf("\t |  [6] Violetas          		         R$ 15,90     | \n");
+	printf("\t |  [7] Girassóis             		       R$ 20,00     | \n");
 	printf("\t |                                                            | \n");
 	
 	do{
@@ -180,11 +180,11 @@ void vendaBuque(int *quantidade_buque){
 	printf("\t |                                                            | \n");
 	printf("\t |             =========== BUQUÊS ===========                 | \n");
     printf("\t |------------------------------------------------------------| \n");
-	printf("\t |  [1] Rosas Vermelhas                                       | \n");
-	printf("\t |  [2] Rosas Amarelas                                        | \n");
-	printf("\t |  [3] Rosas com Girassol         		              | \n");
-	printf("\t |  [4] Buquê Campestre         		              | \n");
-	printf("\t |  [5] Buquê Astromélias         		              | \n");
+	printf("\t |  [1] Rosas Vermelhas                            R$ 149,90  | \n");
+	printf("\t |  [2] Rosas Amarelas                             R$ 123,90  | \n");
+	printf("\t |  [3] Rosas com Girassol         		   R$ 189,90  | \n");
+	printf("\t |  [4] Buquê Campestre         		   R$ 130,95  | \n");
+	printf("\t |  [5] Buquê Astromélias         		   R$ 109,00  | \n");
 	printf("\t |                                                            | \n");
 		
 	do{	
@@ -217,7 +217,7 @@ void vendaPlantas(int *quantidade_plantas, int *quantidade_sem){
 		printf("\t |               =========== PLANTAS ===========              | \n");
 		printf("\t |------------------------------------------------------------| \n");
 		printf("\t |  [1] Sementes                                              | \n");
-		printf("\t |  [2] Plantas no vaso                                       | \n");
+		printf("\t |  [2] Mudas                                                 | \n");
 		printf("\t |                                                            | \n");
 		printf("\t | Escolha uma opção (0 para finalizar): ");
 		scanf("%d", &op_P);
@@ -231,11 +231,11 @@ void vendaPlantas(int *quantidade_plantas, int *quantidade_sem){
 			printf("\t |            		                                      | \n ");
 			printf("\t |              =========== SEMENTES ===========              | \n");
 			printf("\t |------------------------------------------------------------| \n");
-			printf("\t |  [1] Morango                                               | \n");
-			printf("\t |  [2] Tomate                                                | \n");
-			printf("\t |  [3] Pimenta Biquinho                                      | \n");
-			printf("\t |  [4] Cenoura                                               | \n");
-			printf("\t |  [5] Flores Sortidas                                       | \n");
+			printf("\t |  [1] Morango                                     R$ 15,39  | \n");
+			printf("\t |  [2] Tomate                                      R$  4,80  | \n");
+			printf("\t |  [3] Pimenta Biquinho                            R$  3,39  | \n");
+			printf("\t |  [4] Cenoura                                     R$  3,86  | \n");
+			printf("\t |  [5] Flores Sortidas                             R$ 12,90  | \n");
 			printf("\t |                                                            | \n");
 			
 			do{
@@ -261,13 +261,13 @@ void vendaPlantas(int *quantidade_plantas, int *quantidade_sem){
 			printf("\t |            		                                      | \n ");
 			printf("\t |               =========== PLANTAS ===========              | \n");
 			printf("\t |------------------------------------------------------------| \n");
-			printf("\t |  [1] Suculentas                                            | \n");
-			printf("\t |  [2] Cactos                                                | \n");
-			printf("\t |  [3] Samabaias          		                      | \n");
-			printf("\t |  [4] Buxinhos	                                      | \n");
-			printf("\t |  [5] Bromélias          		                      | \n");
-			printf("\t |  [6] Dracenas          		                      | \n");
-			printf("\t |  [7] Lavandas             		                      | \n");
+			printf("\t |  [1] Suculentas                                  R$  8,30  | \n");
+			printf("\t |  [2] Cactos                                      R$ 15,90  | \n");
+			printf("\t |  [3] Samabaias          		            R$ 42,00  | \n");
+			printf("\t |  [4] Buxinhos	                            R$ 30,49  | \n");
+			printf("\t |  [5] Bromélias          		            R$ 37,50  | \n");
+			printf("\t |  [6] Dracenas          		            R$ 25,70  | \n");
+			printf("\t |  [7] Lavandas             		            R$ 28,47  | \n");
 			printf("\t |                                                            | \n");
 			
 			do{
@@ -304,11 +304,11 @@ void vendaItens(int *quantidade_item){
 	printf("\t |            		                                      | \n ");
 	printf("\t |               =========== ITENS ===========                | \n");
 	printf("\t |------------------------------------------------------------| \n");
-	printf("\t |  [1] Pacote de terra 5kg                                   | \n");
-	printf("\t |  [2] Pacote de terra 10kg                                  | \n");
-	printf("\t |  [3] Humus de minhoca 2kg                                  | \n");
-	printf("\t |  [4] Vaso pequeno                                          | \n");
-	printf("\t |  [5] Vaso médio                                            | \n");
+	printf("\t |  [1] Pacote de terra 5kg                         R$  8,00  | \n");
+	printf("\t |  [2] Pacote de terra 10kg                        R$ 15,90  | \n");
+	printf("\t |  [3] Pedra branca 6kg                            R$ 10,99  | \n");
+	printf("\t |  [4] Vaso pequeno                                R$  2,90  | \n");
+	printf("\t |  [5] Vaso médio                                  R$ 13,90  | \n");
 	printf("\t |                                                            | \n");
 
 	do{
@@ -350,6 +350,8 @@ void resumoPedido(char **flores, char **buques, char **plantas, char **itens, ch
     }
     printf("\t |------------------------------------------------------------| \n");    	
     
+    
+
     printf("\t |-> BUQUÊS:                                                  | \n");
     for (i = 0; i < 5; i++) {
 		if (quantidade_buque[i] > 0) { 
@@ -357,6 +359,8 @@ void resumoPedido(char **flores, char **buques, char **plantas, char **itens, ch
         	total += quantidade_buque[i];
     	}
 	}
+
+	
 	printf("\t |------------------------------------------------------------| \n");	
 	
 	printf("\t |-> PLANTAS:                                                 | \n");
@@ -387,5 +391,5 @@ void resumoPedido(char **flores, char **buques, char **plantas, char **itens, ch
 	
 	printf("\t |------------------------------------------------------------| \n");
     printf("\t |                                                            | \n");
-    printf("\t |-> TOTAL DE ITENS: %d                                        | \n", total);
+    printf("\t |-> TOTAL DE ITENS: %d                                       | \n", total);
 }

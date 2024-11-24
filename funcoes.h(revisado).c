@@ -24,7 +24,7 @@ int valida_cpf(char cpf[11]);
 int validarCPF();
 void cadastrarCliente();
 void removerCPF();
-void consulta();
+//void consulta();
 void lista_ordenada();
 int compararClientes(const void *a, const void *b);
 void desativar();

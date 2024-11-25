@@ -15,6 +15,10 @@
 void arte_menu();
 void menu_principal();
 void cadastrarCliente();
+void removerCPF();
+void consulta();
+void lista_ordenada();
+void desativar();
 void menu_venda(char **flores, char **buques, char **sementes, char **plantas, char **itens, int *quantidade, int *quantidade_buque, int *quantidade_plantas, int *quantidade_sem, int *quantidade_item);
 // End Protótipos
 	

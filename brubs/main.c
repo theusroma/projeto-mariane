@@ -92,16 +92,16 @@ int main (){
 		switch(opcaoM){
 		case '1':
 			cadastrarCliente();
-			Sleep(5000);
+			Sleep(2000);
 			break;
 		
 		case '2':
 			removerCPF();
-			Sleep(5000);
+			Sleep(2000);
 			break;
 		
 		case '3':
-			//consulta();
+			consulta();
 			Sleep(5000);
 			break;
 		
@@ -112,7 +112,7 @@ int main (){
 		
 		case '5':
 			desativar();
-			Sleep(5000);
+			Sleep(1000);
 			break;
 	
 		case '6':
@@ -136,7 +136,7 @@ int main (){
 	
 	 // liberação de memória de cada string
     for (i = 0; i < NUM_FLORES; i++) {
-        free(flores[i]); // Libera cada string
+        free(flores[i]); // libera cada string
     }
     for (i = 0; i < 5; i++) {
         free(buques[i]); 

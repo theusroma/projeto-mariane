@@ -163,7 +163,7 @@ void vendaFlores(int *quantidade){
             	printf("\t | Quantidade: ");
 	            scanf("%d", &quant_flor);
 	            
-				quantidade[op_flores - 1] += quant_flor; //atualiza a quantidade na struct
+				quantidade[op_flores - 1] += quant_flor; //atualiza a quantidade no vetor
 				
             } else {
             	printf("\t |            		                                      | \n ");
@@ -199,7 +199,7 @@ void vendaBuque(int *quantidade_buque){
 	    	printf("\t | Quantidade: ");
 	        scanf("%d", &quantidade);
 	        
-			quantidade_buque[tipoBuque - 1] += quantidade; //atualiza a quantidade na struct
+			quantidade_buque[tipoBuque - 1] += quantidade; //atualiza a quantidade no vetor
 	    } else {
 	    	printf("\t |            		                                      | \n ");
 	        printf("\t | Opção inválida! Digite Novamente.                         |");
@@ -322,7 +322,7 @@ void vendaItens(int *quantidade_item){
 	    if (tipoItem >= 1 && tipoItem <= 5) {
 	    	printf("\t | Quantidade: ");
 	        scanf("%d", &quantidade);
-			quantidade_item[tipoItem - 1] += quantidade; //atualiza a quantidade na struct
+			quantidade_item[tipoItem - 1] += quantidade; //atualiza a quantidade no vetor
 	    } else {
 	    	printf("\t |            		                                      | \n ");
 	        printf("\t | Opção inválida! Digite Novamente.                         |");

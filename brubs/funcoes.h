@@ -20,6 +20,7 @@ typedef struct {
 } Cliente;
 
 //Protótipos
+void arte_funcoes();
 int valida_cpf(char cpf[11]);
 int validarCPF();
 void cadastrarCliente();
